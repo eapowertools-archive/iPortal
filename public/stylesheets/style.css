@@ -1,0 +1,76 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.footer {
+  margin-top: 15px;
+  text-align: center;  
+}
+
+.user-container {
+  text-align: center;
+}
+
+.user-panel {
+  display: inline-block;
+  position: relative;
+  vertical-align: top;
+  width: 190px;
+  height: 165px;
+  border: 1px  solid;
+  color: lightgrey;
+  padding: 2px;
+  margin: 2px;
+}
+
+.user-panel:hover {
+  background-color: lightgrey;
+}
+
+.user-panel-name {
+  color:darkgreen;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.user-panel-title {
+  color:darkgreen;
+  font-style: italic;
+}
+
+.user-panel-groups {
+  color: grey;
+  font-size: 10px;
+  margin-top: 5px;
+}
+
+.user-panel-apps {
+  position: absolute;
+  bottom: 4px;
+  width: 100%; 
+  text-align: center;
+}
+
+.user-app-btn {
+  width: 40%;
+}
+
+.group-btn {
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: Arial;
+  background-color: white;
+  color: grey;
+  font-size: 10px;
+  padding: 2px 7px 2px 7px;
+  border: solid grey 1px;
+  text-decoration: none;
+  margin: 2px;
+}
+
