@@ -1,6 +1,7 @@
 # iPortal Installation Guide
 
 The iPortal application is used to easily impersonate a collection of users in Qlik Sense.  **It is not intended for production environments.**  Installing iPortal involves the following sequence of steps which are described in detail later in this guide.
+
 1. Extract the iPortal.zip file
 2. Configure the Qlik Sense Service Dispatcher
 3. Create a new Virtual Proxy (VP) for the iPortal application
@@ -19,7 +20,14 @@ Additional configuration rules are required to grant iPortal users access to res
 [IPORTAL_INSTALL] - This is the fully qualified path for the iPortal application install (ex: c:\Program Files\Qlik\Sense\ServiceDispatcher\Node\iPortal)
 
 ## Step-by-Step Installation
-1. Extract **iPortal.zip** to the folder **[QLIK_INSTALL]\ServiceDispatcher\Node**.  The zip file contains a root directory named **iPortal** so the extracted application should be located in the folder **[Qlik Sense Install Directory]\ServiceDispatcher\Node\iPortal**.
+1. Install [Node.js](https://nodejs.org/en/).  The Node.js Package Manager (npm) is currently required to install the iPortal application dependencies.  In the future, dependencies will automatically be installed with an automated installation program.   
+1. Extract the iPortal.zip file to the folder **[QLIK_INSTALL]\ServiceDispatcher\Node\iPortal**.  If you downloaded the zip file from GitHub, it may contain and suffix (ex: iportal-master.zip).  If so, after expanding the zip file you need to rename the directory to **iPortal**.
+1. Open the **Windows Command Prompt** and navigate to the **[IPORTAL_INSTALL]** directory.  Enter the following command:
+
+```
+npm install
+```
+
 2. Copy the *contents* of the file **[IPORTAL_INSTALL]\services.conf** and *paste* it into **[QLIK_INSTALL]\ServiceDispatcher\services.conf**.
 3. Restart the **Qlik Sense Service Dispatcher** Windows Service.
 4. Create a new *Virtual Proxy* within the Qlik Sense QMC as defined below:
