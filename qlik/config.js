@@ -16,6 +16,7 @@ var config = {}
 //      TRACE - Traces are logged
 // Selecting a level will include logging events at the level and all lower levels. 
 config.LOGLEVEL = "TRACE";
+config.LOGDIR = "C:/ProgramData/Qlik/Sense/Log";
 
 // Enter the path to the directory where the iPortal application is installed.  Multiple paths
 // have been provided for the most common installation locations.  Uncomment the one you are 
@@ -29,7 +30,7 @@ config.CERTPATH = 'C:/ProgramData/Qlik/Sense/Repository/Exported Certificates/.L
 
 // Enter the name of the Qlik Sense Server.  This must match the [Host name] when you installed
 //  Qlik Sense.
-config.HOSTNAME = "Enter the hostname for your server here.";
+config.HOSTNAME = "qlikserver";
 
 // Enter the name of the Qlik Sense Virtual Proxy prefix.  This must match the [Prefix] used when
 // you configured your Virtual Proxy within the Qlik Sense QMC.

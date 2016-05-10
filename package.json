@@ -1,6 +1,6 @@
 {
   "name": "iPortal",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
     "start": "node Node/iPortal/server.js"
@@ -12,6 +12,11 @@
     "express": "~4.13.1",
     "hbs": "~3.1.0",
     "morgan": "~1.6.1",
-    "serve-favicon": "~2.3.0"
+    "serve-favicon": "~2.3.0",
+    "express-session":"~1.13.0",
+    "jquery":"~2.2.3",
+    "log4js":"~0.6.36",
+    "extend":"~3.0.0",
+    "xlsx":"~0.8.0"    
   }
 }
