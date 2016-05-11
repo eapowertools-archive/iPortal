@@ -1,3 +1,17 @@
 <h1>{{message}}</h1>
 <h2>{{error.status}}</h2>
 <pre>{{error.stack}}</pre>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">{{message}}</div>
+    <div class="panel-body">
+        {{error.status}}
+        <code>
+            {{error.stack}}
+        </code>
+    </div>    
+</div>
+
+<div class="text-center">
+<a href="/" class="btn btn-primary">Return to List of Users</a>
+</div>

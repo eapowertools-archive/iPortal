@@ -11,18 +11,23 @@ var logger = log4js.getLogger('iportal');
 module.exports = {
     requestticket: function(req, res, next, selectedUser, userDirectory, restURI, userApp) {
         //Configure parameters for the ticket request
-        var options = {
-            host: url.parse(restURI).hostname,
-            port: url.parse(restURI).port,
-            path: url.parse(restURI).path + '/ticket?xrfkey=aaaaaaaaaaaaaaaa',
-            method: 'POST',
-            headers: { 'X-qlik-xrfkey': 'aaaaaaaaaaaaaaaa', 'Content-Type': 'application/json' },
-            cert: fs.readFileSync(cfg.CLIENTCERT),
-            key: fs.readFileSync(cfg.CLIENTKEY),
-            passphrase: cfg.CERTIFICATEPWD,
-            rejectUnauthorized: false,
-            agent: false
-        };
+        try {
+            var options = {
+                host: url.parse(restURI).hostname,
+                port: url.parse(restURI).port,
+                path: url.parse(restURI).path + '/ticket?xrfkey=aaaaaaaaaaaaaaaa',
+                method: 'POST',
+                headers: { 'X-qlik-xrfkey': 'aaaaaaaaaaaaaaaa', 'Content-Type': 'application/json' },
+                cert: fs.readFileSync(cfg.CLIENTCERT),
+                key: fs.readFileSync(cfg.CLIENTKEY),
+                passphrase: cfg.CERTIFICATEPWD,
+                rejectUnauthorized: false,
+                agent: false
+            };
+        } catch (e) {
+            logerror(e);
+            res.render('error', 'Unable to initialize client certificate for HTTPS request.');            
+        }
 
         logger.info("requestTicket: Ticket Options (", options.path.toString(),")");
         //Send ticket request
