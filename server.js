@@ -7,7 +7,7 @@ var log4js = require('log4js');
 var fs = require('fs');
 
 log4js.loadAppender('file');
-log4js.addAppender(log4js.appenders.file(cfg.LOGDIR+'/iPortal.log'), 'iportal');
+log4js.addAppender(log4js.appenders.file(cfg.LOGFILE), 'iportal');
 
 var logger = log4js.getLogger('iportal');
 

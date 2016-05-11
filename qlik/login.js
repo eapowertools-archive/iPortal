@@ -25,8 +25,8 @@ module.exports = {
                 agent: false
             };
         } catch (e) {
-            logerror(e);
-            res.render('error', 'Unable to initialize client certificate for HTTPS request.');            
+            logger.error(e);
+            res.render('error', e);            
         }
 
         logger.info("requestTicket: Ticket Options (", options.path.toString(),")");
@@ -57,6 +57,8 @@ module.exports = {
                     var myQueryString = querystring.parse(myRedirect.query);                
                     myQueryString['QlikTicket'] = ticket.Ticket; 
                     
+                    // The redirectURI currently works for any application that is simply a path on the Qlik Sense URL (ex. /hub, /qmc, or /devhub)
+                    // TODO: Exhance this code to support launching applications that are not an extension of the Qlik Sense URL. 
                     var redirectURI = cfg.REDIRECTURI + userApp + '?Qlikticket=' + ticket.Ticket;			    
                     logger.debug("requestTicket: Redirecting to (", redirectURI,")");
                     
