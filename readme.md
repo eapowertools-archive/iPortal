@@ -1,27 +1,30 @@
-# iPortal Installation Guide
+# iPortal Installation Overview
 
 The iPortal application is used to easily impersonate a collection of users in Qlik Sense.  **It is not intended for production environments.**  Installing iPortal involves the following sequence of steps which are described in detail later in this guide.
 
-1. Extract the iPortal.zip file
+1. Extract the iPortal application zip file
 2. Configure the Qlik Sense Service Dispatcher
 3. Create a new Virtual Proxy (VP) for the iPortal application
 4. Create a new User Directory Connector (UDC) for iPortal users
 5. Configure a User access rule to grant iPortal users access to Qlik Sense
 
-Additional configuration rules are required to grant iPortal users access to resources.  These rules are not covered in this installation guide.  Please refer to ... for best practices on configuring security rules.
+Additional configuration rules are required to grant iPortal users access to resources.  These rules are not covered in this installation guide.  Please refer to (TBD) for best practices on configuring security rules.
 
-> The installation guide assumes the Windows computer name where Qlik Sense is installed is named **qlikserver**.  If your Windows computer name is different, you will need to substitute your computer name for **qlikserver** throughout this guide.
+> The installation guide assumes the Windows computer name where Qlik Sense is installed is named **qlikserver**.  If your Windows computer name is different, you will need to substitute your computer name for **qlikserver** throughout this guide.  
 
-> The installation guide provides instructions for both an Excel ODBC and ODBC (CSV) User Directory Connector for iPortal users. Both may require that you install the Microsoft Access Database Engine to get the ODBC drivers installed.  This was the case for a clean Windows Server 2012 R2 installation.
+> You will also need to edit the config.HOSTNAME entry in [IPORTAL_INSTALL]\qlik\config.js to match your Window's computer name. 
+
+> The iPortal application uses an Excel ODBC User Directory Connector to import the iPortal users. If you are installing iPortal on a clean client or server machine, you may need to install the Microsoft Access Database Engine to get the required ODBC drivers.  You can use this [link](https://www.dropbox.com/s/yeuk5esosh18pp9/AccessDatabaseEngine_x64.exe?dl=0) to download the 64 bit drivers from Dropbox.
 
 ## Guide Conventions
 
-[QLIK_INSTALL] - This is the fully qualified path for the Qlik Sense install (ex: c:\Program File\Qlik\Sense)
-[IPORTAL_INSTALL] - This is the fully qualified path for the iPortal application install (ex: c:\Program Files\Qlik\Sense\ServiceDispatcher\Node\iPortal)
+**[QLIK_INSTALL]** - This is the fully qualified path for the Qlik Sense install (ex: c:\Program File\Qlik\Sense)
 
-## Step-by-Step Installation
+**[IPORTAL_INSTALL]** - This is the fully qualified path for the iPortal application install (ex: c:\Program Files\Qlik\Sense\ServiceDispatcher\Node\iPortal)
+
+# iPortal Step-by-Step Installation Guide
 1. Install [Node.js](https://nodejs.org/en/).  The Node.js Package Manager (npm) is currently required to install the iPortal application dependencies.  In the future, dependencies will automatically be installed with an installation program.   
-2. Extract the iPortal.zip file to the folder **[QLIK_INSTALL]\ServiceDispatcher\Node\iPortal**.  If you downloaded the zip file from GitHub, it may contain and suffix (ex: iportal-master.zip).  If so, after expanding the zip file you must to rename the directory to **iPortal**.
+2. Extract the iPortal zip file to the folder **[QLIK_INSTALL]\ServiceDispatcher\Node\**.  If you downloaded the zip file from GitHub, the zip file may contain a suffix (ex: iportal-master.zip).  If so, after expanding the zip file you must rename the directory to **iPortal**.
 3. Open the **Windows Command Prompt** and navigate to the **[IPORTAL_INSTALL]** directory.  Enter the following command:
 
     ```
@@ -48,24 +51,8 @@ Additional configuration rules are required to grant iPortal users access to res
 
     ![alt text](https://github.com/eapowertools/iPortal/blob/master/public/images/vp_associated_items.png?raw=true "Virtual Proxy Edit Form")
 
-8. Create a new *User Directory Connector* within the Qlik Sense QMC for the iPortal users.  Data files are provided for an Excel or CSV based UDC.  Instructions for creating both are provided below, you only need to configure *one*!
+8. Create a new *User Directory Connector* for iPortal users within the Qlik Sense QMC as defined below: 
 
-    ### CSV
-    ![alt text](https://github.com/eapowertools/iPortal/blob/master/public/images/udc_csv.png?raw=true "Virtual Proxy Edit Form")
-
-    ```
-    Attributes that need to be modified in the form:
-    
-    Name: iPortal UDC
-    Type: ODBC
-    User Sync Settings: Make sure the checkbox is UNCHECKED
-    User directory name: iPortal
-    User table name: users.csv
-    Attributes table name: attributes.csv
-    Visible connection string: Driver={Microsoft Access Text Driver (*.txt, *.csv)};Extensions=asc,csv,tab,txt;Dbq=C:\Program Files\Qlik\Sense\ServiceDispatcher\Node\iPortal\udc\csv
-    ```
-
-    ### Excel
     ![alt text](https://github.com/eapowertools/iPortal/blob/master/public/images/udc_excel.png?raw=true "Virtual Proxy Edit Form")
     
     ```
@@ -77,10 +64,12 @@ Additional configuration rules are required to grant iPortal users access to res
     User directory name: iPortal
     User table name: [Users$]
     Attributes table name: [Attributes$]
-    Visible connection string: DRIVER={Microsoft Excel Driver (*.xls, *.xlsx, *.xlsm, *.xlsb)};DBQ=C:\Progam Files\Qlik\Sense\ServiceDispatcher\Node\iPortal\udc\excel\iportal_users.xlsx
+    Visible connection string: DRIVER={Microsoft Excel Driver (*.xls, *.xlsx, *.xlsm, *.xlsb)};DBQ=C:\Program Files\Qlik\Sense\ServiceDispatcher\Node\iPortal\udc\excel\iportal_users.xlsx
     ```
 
-9. Add a *User access rule* to grant all users from the *iPortal* User Directory  a user access token.
+9. **Sync** the newly created iPortal UDC to load the iPortal users.
+
+10. Add a *User access rule* to grant all users from the *iPortal* User Directory  a user access token.
 
     ![alt text](https://github.com/eapowertools/iPortal/blob/master/public/images/user_access_rule.png?raw=true "Virtual Proxy Edit Form")
     
@@ -91,4 +80,4 @@ Additional configuration rules are required to grant iPortal users access to res
     BASIC: Select userDirectory from user attribute list and select iPortal for the value
     ```
     
-10. Open a browser and access [https://qlikserver:3080](https://qlikserver:3080) or [https://qlikserver/iportal/hub](https://qlikserver/iportal/hub)!
+11. Open a browser and access [https://qlikserver:3080](https://qlikserver:3080) or [https://qlikserver/iportal/hub](https://qlikserver/iportal/hub)!
