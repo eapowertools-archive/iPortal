@@ -26,12 +26,18 @@ app.set('port', port);
  * Create HTTP server.
  */
 //Server options to run an HTTPS server
-var httpsoptions = {
-    cert: fs.readFileSync(cfg.SERVERCERT),
-    key: fs.readFileSync(cfg.SERVERKEY),
-   
-    passphrase: cfg.CERTIFICATEPWD
-};
+try {
+  var httpsoptions = {
+      cert: fs.readFileSync(cfg.SERVERCERT),
+      key: fs.readFileSync(cfg.SERVERKEY),
+    
+      passphrase: cfg.CERTIFICATEPWD
+  };
+} catch (e) {
+  logger.fatal(e);
+  logger.fatal('iPortal application terminated.');
+  process.exit(1);
+}
 
 var server = http.createServer(httpsoptions, app);
 
