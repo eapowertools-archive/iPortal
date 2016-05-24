@@ -66,18 +66,14 @@ module.exports = {
                 logger.trace('loadExcelUsers: Found ',userSpecificAttrs.length,' attributes associated with user (',name,')');
             
                 var userGroups = [];
-                var userRoles = [];
-                var userTags = [];
                 var userApps = [];
                 
                 for(var i=0; i<userSpecificAttrs.length; i++) {
                     logger.trace('loadExcelUsers: Transforming attribute (',userSpecificAttrs[i].type,') with value (',userSpecificAttrs[i].value,')...');
                     if (userSpecificAttrs[i].type == 'group') {
                         userGroups.push(userSpecificAttrs[i].value);
-                    } else if (userSpecificAttrs[i].type == 'role') {
-                        userRoles.push(userSpecificAttrs[i].value);
-                    } else if (userSpecificAttrs[i].type == 'tag') {
-                        userTags.push(userSpecificAttrs[i].value);
+                    } else if (userSpecificAttrs[i].type == 'image') {
+                        User["image"]=userSpecificAttrs[i].value;
                     } else if (userSpecificAttrs[i].type == 'app') {
                         userApps.push(userSpecificAttrs[i].value);
                     } else if (userSpecificAttrs[i].type == 'udc') {
@@ -90,8 +86,6 @@ module.exports = {
                 }
                 
                 User["groups"] = userGroups;    
-                User["roles"] = userRoles;
-                User["tags"] = userTags;
                 User["apps"] = userApps;                                            
             }
         }

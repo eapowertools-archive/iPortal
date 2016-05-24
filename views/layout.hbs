@@ -15,33 +15,59 @@
             <div class="container-fluid">
               <!-- Brand and toggle get grouped for better mobile display -->
               <div class="navbar-header">     
-                <a href="/" class="pull-left">
-                <img alt="iPortal" src="/images/q.png">
-              </a>          
-                <a class="navbar-brand" href="/"> iPortal</a>
+                <a href="/" class="pull-left"><img alt="iPortal" src="/images/powertoolslogo.png"></a>
+                <a class="navbar-brand" href="/" style="padding-left: 20px;"> iPortal</a>
               </div>
 
-              <!-- Collect the nav links, forms, and other content for toggling 
+               
               <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">                                       
                 <ul class="nav navbar-nav navbar-right">        
                   <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="admin glyphicon glyphicon-cog"></span> Admin <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
                     <ul class="dropdown-menu">
-                      <li><a href="#">Option #1</a></li>
-                      <li><a href="#">Option #2</a></li>            
-                      <li role="separator" class="divider"></li>
-                      <li><a href="#">Option #3</a></li>
+                      <li><a data-toggle="modal" data-target="#myModal">About iPortal</a></li>                      
                     </ul>
                   </li>
                 </ul>
               </div>  
-              -->
+              
             </div><!-- /.container-fluid -->
-          </nav>    
+          </nav>                
       
-      {{{body}}}      
-      <p class="footer">Qlik Sense Impersonation Portal (iPortal) created by the Qlik Enterprise Architecture Team, 2016.</p>
-     </div>
+          {{{body}}}    
+          
+          <!-- Modal: About iPortal -->
+          <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog modal-lg">
+            
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">About iPortal</h4>
+                </div>
+                <div class="modal-body">
+                  <p>The iPortal application is used to <i>impersonate</i> different users within Qlik Sense.  
+                  It is primarily used to test the results of security rule changes on a population of users
+                  that belong to various security groups.</p>
+                  <p><h4>Contributors</h4>
+                  <ul>
+                    <li>Eric Bracke</li>
+                    <li>Brad Peterman</li>
+                    <li>Jeffrey Goldberg</li>
+                    <li>Tom McAlees</li>
+                  </ul>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+              
+            </div>
+          </div>                      
+            
+          <p class="footer">Qlik Sense Impersonation Portal (iPortal). Refer to <a data-toggle="modal" data-target="#myModal">about</a> page for more details.</p>
+      </div>
     </div>
   </body>
 </html>

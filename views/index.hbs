@@ -2,23 +2,37 @@
 
     
     {{#each users}}
-        <div class="user-panel">
+        <div class="user-panel">                                                       
             <div class="user-panel-name">{{this.name}}</div>
-            <div class="user-panel-title">{{this.title}}</div>
-            <div class="user-panel-groups">
-                {{#each this.groups}}
-                {{this.groups}}
-                    <button class="group-btn">{{this}}</button>
-                {{/each}}
-            </div>
-            <div class="user-panel-apps">                          
-                {{#each this.apps}}
-                   
-                    <a class="btn {{ButtonStyle this}} btn-sm user-app-btn" href="/login?user={{../userid}}&directory={{../udc}}&app={{this}}">{{this}}</a>
-                {{/each}}
-            </div>                       
+            <div class="user-panel-title"><a class="user-panel-title" onclick="toggle_visibility('user-group{{@index}}');">{{this.title}}</a></div>            
+            <div class="user-panel-body" style="background-image: url('/images/{{this.image}}');">
+                <div id="user-group{{@index}}" class="user-panel-groups">
+                    {{#each this.groups}}
+                    {{this.groups}}
+                        <button class="group-btn">{{this}}</button>
+                    {{/each}}
+                </div>                                 
+                <div class="user-panel-apps">                          
+                    {{#each this.apps}}
+                    
+                        <a class="btn {{ButtonStyle this}} btn-sm user-app-btn" href="/login?user={{../userid}}&directory={{../udc}}&app={{this}}">{{this}}</a>
+                    {{/each}}
+                </div>                       
+             </div>
         </div>
     {{/each}}
+    
+    <script type="text/javascript">
+    <!--
+        function toggle_visibility(id) {
+        var e = document.getElementById(id);
+        if(e.style.display == 'block')
+            e.style.display = 'none';
+        else
+            e.style.display = 'block';
+        }
+    //-->
+    </script>
 
 
 </div>

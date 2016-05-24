@@ -21,7 +21,7 @@ app.set('view engine', 'hbs');
 hbs.registerPartials(__dirname+'/views/partials');
 
 // uncomment after placing your favicon in /public
-app.use(favicon(path.join(__dirname, 'public', '/images/q.png')));
+app.use(favicon(path.join(__dirname, 'public', '/images/powertoolslogo.png')));
 app.use(logger('dev'));
 app.use(session({ resave: true,
                   saveUninitialized: true,
