@@ -1,10 +1,9 @@
 <div class="user-container">   
 
-    
     {{#each users}}
         <div class="user-panel">                                                       
             <div class="user-panel-name">{{this.name}}</div>
-            <div class="user-panel-title"><a class="user-panel-title" onclick="toggle_visibility('user-group{{@index}}');">{{this.title}}</a></div>            
+            <div class="user-panel-title"><a class="user-panel-title" onclick="toggle_group_visibility('user-group{{@index}}');">{{this.title}}</a></div>            
             <div class="user-panel-body" style="background-image: url('/images/{{this.image}}');">
                 <div id="user-group{{@index}}" class="user-panel-groups">
                     {{#each this.groups}}
@@ -24,12 +23,20 @@
     
     <script type="text/javascript">
     <!--
-        function toggle_visibility(id) {
+        function toggle_group_visibility(id) {
         var e = document.getElementById(id);
         if(e.style.display == 'block')
             e.style.display = 'none';
         else
             e.style.display = 'block';
+        }
+        
+        function show_all_group_visibility() {            
+           $('[id^="user-group"]').show(); 
+        }
+        
+        function hide_all_group_visibility() {            
+           $('[id^="user-group"]').hide(); 
         }
     //-->
     </script>
