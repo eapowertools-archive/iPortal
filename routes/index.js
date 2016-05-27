@@ -26,6 +26,7 @@ router.get('/', function(req, res, next) {
 	});
 
 	var config = users.loadExcelUsers();
+	config.cfg = cfg;
 
 	res.render('index', config);
 });

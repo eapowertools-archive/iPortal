@@ -35,7 +35,7 @@ config.VIRTUALPROXYPREFIX = "iportal";
 // Port that Node.js will listen to for authentication requests from Qlik Sense 
 // This port number must match your [Authentication module redirect URI] field value in your 
 // Virtual Proxy's Authentication attributes within the Qlik Sense QMC.
-config.PORT='3080';
+config.PORT='3090';
 
 // The path and filename for the Excel file containing the list of users and attributes.
 // The Excel file should follow the guidelines for a Qlik Sense Excel User Directory Connector.
@@ -78,5 +78,12 @@ config.AUTHURI='https://'+config.HOSTNAME+':4243/qps/'+config.VIRTUALPROXYPREFIX
 //      https://qlikserver/iportal/hub
 //      https://qlikserver/iportal/single?appid=cd29ef8d-7c02-48d3-8d90-b5a40395c316&sheet=LSgtJH&opt=currsel&select=clearall
 config.REDIRECTURI='https://'+config.HOSTNAME+'/'+config.VIRTUALPROXYPREFIX+'/';
+
+// THEME is used to alter the look & feel of the iPortal users.  Two themes are provided with 
+// the default installation of iPortal (photos & clipart).  If you would like to use custom
+// images for the users, simple create a new folder in public/images and set the value of
+// config.THEME to be the name of this folder.
+config.THEME = 'photos';
+//config.THEME = 'clipart';
 
 module.exports = config;

@@ -4,7 +4,7 @@
         <div class="user-panel">                                                       
             <div class="user-panel-name">{{this.name}}</div>
             <div class="user-panel-title"><a class="user-panel-title" onclick="toggle_group_visibility('user-group{{@index}}');">{{this.title}}</a></div>            
-            <div class="user-panel-body" style="background-image: url('/images/{{this.image}}');">
+            <div class="user-panel-body" style="background-image: url('/images/{{../cfg.THEME}}/{{this.image}}');">
                 <div id="user-group{{@index}}" class="user-panel-groups">
                     {{#each this.groups}}
                     {{this.groups}}
