@@ -479,7 +479,7 @@ var
   if (CurPageID = Page.ID) then begin
       
     if (hostnameField.Text = '') then begin
-      errorString := errorString + 'Please enter a hostname.' + #13#10;
+      errorString := 'Please enter a hostname.' + #13#10;
       flagGo :=1;
     end;
     //MsgBox(chPath + ' ' + '"' + appPath + '" "' + checkHostNamePath + '" ' + hostnameField.Text + ' 4242', mbInformation, MB_OK);
@@ -512,8 +512,14 @@ var
           end;
        end
        else begin
-          MsgBox('The virtual proxy does not exist.  Check the create checkbox to create the virtual proxy.',mbInformation,MB_OK);
-          flagGo:=1
+          if(createVirtualProxyCB.Checked) then
+          begin
+            flagGo:=0;
+          end
+          else begin
+            MsgBox('The virtual proxy does not exist.  Check the create checkbox to create the virtual proxy.',mbInformation,MB_OK);
+            flagGo:=1
+          end;
        end;
     end;    
     
@@ -533,8 +539,14 @@ var
 
                            
       Result := True;
-    end else begin 
-      MsgBox(errorString, mbError, MB_OK);
+    end else begin
+      if(errorString = '') then
+      begin
+          //do nothing
+      end
+      else begin
+        MsgBox(errorString, mbError, MB_OK);
+      end;
       Result := False;
     end;
   end else begin
