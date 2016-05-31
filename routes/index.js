@@ -1,12 +1,19 @@
 var express = require('express');
-var cfg = require('../qlik/config');
-var login = require('../qlik/login');
-var users = require('../qlik/users');
+var cfg = require('../config/config');
+var login = require('../lib/login');
+var users = require('../lib/users');
 var handlebars = require('hbs');
 var router = express.Router();
-var log4js = require('log4js');
+var winston = require('winston');
 
-var logger = log4js.getLogger('iportal');
+//set up logging
+var logger = new (winston.Logger)({
+	level: cfg.logLevel,
+	transports: [
+      new (winston.transports.Console)(),
+      new (winston.transports.File)({ filename: cfg.logFile})
+    ]
+});
 /* 
 	GET /
 
@@ -37,11 +44,13 @@ router.get('/login', function(req, res, next) {
 		var user = req.query.user;
 		var directory = req.query.directory;
 		var app = req.query.app;
+		var authUri = 'https://' + cfg.hostname +  ':' + cfg.qpsPort +  '/qps/' + cfg.virtualProxy;
 		
 		logger.debug('Route: GET /login - USER: (',user,') DIRECTORY: (', directory,')');
 		
 		logger.debug('Route: GET /login - Requesting ticket...');
-		login.requestticket(req, res, next, user, directory, cfg.AUTHURI, app);
+		logger.debug(authUri);
+		login.requestticket(req, res, next, user, directory, authUri, app);
 		
 		req.session.destroy();
 	});
