@@ -1,45 +1,42 @@
 process.env.NODE_PATH = __dirname;
 var app = require('./app');
-var cfg = require('./qlik/config');
-var http = require('http');
-var http = require('https');
-var log4js = require('log4js');
+var cfg = require('./config/config');
+var https = require('https');
+var winston = require('winston');
 var fs = require('fs');
 
-log4js.loadAppender('file');
-log4js.addAppender(log4js.appenders.file(cfg.LOGFILE), 'iportal');
-
-var logger = log4js.getLogger('iportal');
-
-logger.setLevel(cfg.LOGLEVEL);
-logger.info('Starting iPortal application...');
-logger.info('Log level set to ',cfg.LOGLEVEL);
+//set up logging
+var logger = new (winston.Logger)({
+	level: cfg.logLevel,
+	transports: [
+      new (winston.transports.Console)(),
+      new (winston.transports.File)({ filename: cfg.logFile})
+    ]
+});
 
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(cfg.PORT || '3080');
+var port = normalizePort(cfg.serverPort || '3090');
 app.set('port', port);
 
 /**
- * Create HTTP server.
+ * Create HTTPs server.
  */
 //Server options to run an HTTPS server
 try {
   var httpsoptions = {
-      cert: fs.readFileSync(cfg.SERVERCERT),
-      key: fs.readFileSync(cfg.SERVERKEY),
-    
-      passphrase: cfg.CERTIFICATEPWD
+      cert: fs.readFileSync(cfg.certificates.server),
+      key: fs.readFileSync(cfg.certificates.server_key)
   };
 } catch (e) {
-  logger.fatal(e);
-  logger.fatal('iPortal application terminated.');
+  logger.error(e);
+  logger.error('iPortal application terminated.');
   process.exit(1);
 }
 
-var server = http.createServer(httpsoptions, app);
+var server = https.createServer(httpsoptions, app);
 
 /**
  * Listen on provided port, on all network interfaces.
