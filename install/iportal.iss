@@ -51,6 +51,10 @@ Source: "F:\My Documents\_Git\iportal\utils\*"; DestDir: "{app}\utils"; Flags: i
 [Dirs]
 Name: "{app}\log"; Flags: uninsalwaysuninstall;
 
+[UninstallDelete]
+Type: filesandordirs; Name: "{app}\log\*"
+Type: filesandordirs; Name: "{app}\utils\*"
+
 [Code]
 const
   size = 9;
@@ -71,9 +75,10 @@ var
   driversStatic: TNewMemo;
   URLLabel: TNewStaticText;
   MLEMessage: string;
-  createVirtualProxyCB : TNewCheckBox;
+  createUDCCB, createVirtualProxyCB : TNewCheckBox;
   appPath, executePath, fullPath, errorString: String;
   chPath, cvpPath, checkHostNamePath, checkVPExistPath: String;
+  checkUDCExistPath, UDCPath, createUDCPath, createUDCjs: String; 
 
 
   
@@ -149,11 +154,31 @@ begin
 	end;
 end;
 
+procedure SetControlCursor(control: TWinControl; cursor: TCursor);
+var i:Integer;
+    wc: TWinControl;
+begin
+  if (not (control = nil)) then begin
+    control.Cursor := cursor;
+    try
+      for i:=0 to control.ControlCount-1 do begin
+        wc := TWinControl(control.Controls[i]);
+        if (NOT(wc = nil)) then
+          SetControlCursor(wc, cursor)
+        else
+          control.Controls[i].Cursor := cursor;
+      end; {for}
+    finally
+
+    end;{try}
+  end;{if}
+end;{procedure SetControlCursor}
+
   procedure InitializeWizard;
 begin
   { Create the pages }
-   Page := CreateCustomPage(wpInstalling, 'QS Ticket Epic Module', 
-   'Please confirm or change the following configuration defaults for the QS Ticket Epic Module.');
+   Page := CreateCustomPage(wpInstalling, 'iPortal', 
+   'Please confirm or change the following configuration defaults for the iPortal.');
   
   //Page.OnNextButtonClick := @NextButtonClick;
   //0  
@@ -244,7 +269,7 @@ begin
   udLabel := TLabel.Create(Page);
   udLabel.Top := allowedConnectionsLabel.Top + 29;
   udLabel.Width := 8;
-  udLabel.Caption := 'user directory:';
+  udLabel.Caption := 'user directory name:';
   udLabel.Parent := Page.Surface;
 
   //12
@@ -254,6 +279,14 @@ begin
   udField.Width := 200;
   udField.Text := 'iportal';
   udField.Parent := Page.Surface;
+
+  //13 create UDC check box?
+  createUDCCB := TNewCheckBox.Create(Page);
+  createUDCCB.Left := 194;
+  createUDCCB.Top := udField.Top + 29;
+  createUDCCB.Width := 200;
+  createUDCCB.Caption := 'Create user directory Connection?';
+  createUDCCB.Parent := Page.Surface;
   
 
   serviceConfLookup := CreateInputFilePage(Page.ID, 
@@ -377,8 +410,8 @@ Begin
       begin
       for i:= lineNbr to lineNbr + 6 do
         begin
-          Line := '';
-          FileLines[i] := Line; 
+          //MsgBox('Line Value: ' + FileLines[lineNbr] + ', line number: ' + IntToStr(i), mbInformation,MB_OK);
+          FileLines.Delete(lineNbr); 
         end;
       end;
     end;
@@ -393,6 +426,95 @@ procedure CancelButtonClick(CurPageID: Integer; var Cancel, Confirm: Boolean);
 begin
   Confirm:= not forceClose;
 end;   
+
+function virtualProxyCheck(cvpPath, appPath, checkVPExistPath: String) : Integer;
+var
+  ResultCode: Integer;
+Begin
+  //MsgBox(cvpPath + ' ' + '"' + appPath + '" "' + checkVPExistPath + '" ' + hostnameField.Text + ' 4242 ' + virtualProxyField.Text, mbInformation, MB_OK);
+    if ShellExec('',cvpPath, '"' + appPath + '" "' + checkVPExistPath + '" ' + hostnameField.Text + ' 4242 ' + virtualProxyField.Text,'', SW_HIDE, ewWaitUntilTerminated, ResultCode) then
+    begin
+       if(FileExists(ExpandConstant('{app}\utils\checkVPExist.txt'))) then
+       begin
+          if MsgBox('The virtual proxy prefix you entered already exists. Do you want to use this virtual proxy for the iPortal?', mbConfirmation, MB_YESNO) =IDYES then
+          begin
+            MsgBox('You have chosen to use an existing virtual proxy.  Please ensure the authentication redirect url and port match your virtual proxy before using iPortal.', mbInformation, MB_OK);
+            DeleteFile(ExpandConstant('{app}\utils\checkVPExist.txt'));
+            Result:=0;
+          end
+          else begin
+            MsgBox('To create a new virtual proxy, change the virtual proxy name and check the create checkbox.',mbInformation, MB_OK);
+            DeleteFile(ExpandConstant('{app}\utils\checkVPExist.txt'));         
+            Result:=1;
+          end;
+       end
+       else begin
+          
+          if(createVirtualProxyCB.Checked) then
+          begin
+           Result:=0;
+          end
+          else begin
+            MsgBox('The virtual proxy does not exist.  Check the create checkbox to create the virtual proxy.',mbInformation,MB_OK);
+            Result:=1
+          end;
+       end;
+    end;    
+end;
+
+function hostnameCheck(chPath, appPath, checkHostNamePath: String) : Integer;
+var
+  ResultCode: Integer;
+Begin
+   //MsgBox(chPath + ' ' + '"' + appPath + '" "' + checkHostNamePath + '" ' + hostnameField.Text + ' 4242', mbInformation, MB_OK);
+    
+    if ShellExec('',chPath, '"' + appPath + '" "' + checkHostNamePath + '" ' + hostnameField.Text + ' 4242' ,'', SW_HIDE, ewWaitUntilTerminated, ResultCode) then
+    begin
+        if(FileExists(ExpandConstant('{app}\utils\checkHostName.txt'))) then
+       begin
+          //file exists, all good
+       end
+       else begin
+          errorString := 'The hostname you entered is not a valid Qlik Sense server hostname.  Please enter a valid hostname.';
+          Result:=1;
+       end;
+    end;
+end;
+
+function UDCCheck(UDCPath, appPath, checkUDCExistPath : String) : Integer;
+var
+  ResultCode: Integer;
+
+Begin
+  if ShellExec('',UDCPath, '"' + appPath + '" "' + checkUDCExistPath + '" ' + hostnameField.Text + ' 4242 ' + udField.Text,'', SW_HIDE, ewWaitUntilTerminated, ResultCode) then
+  begin
+     if(FileExists(ExpandConstant('{app}\utils\checkUDCExist.txt'))) then
+     begin
+        if MsgBox('The user directory connection you entered already exists. Do you want to use this user directory connection for the iPortal?', mbConfirmation, MB_YESNO) =IDYES then
+        begin
+          MsgBox('You have chosen to use an existing user directory connection.  Please update the included excel file to update users before using iPortal.', mbInformation, MB_OK);
+          DeleteFile(ExpandConstant('{app}\utils\checkUDCExist.txt'));
+          Result:=0;
+        end
+        else begin
+          MsgBox('To create a new user directory connection, change the user directory connection name and check the create checkbox.',mbInformation, MB_OK);
+          DeleteFile(ExpandConstant('{app}\utils\checkUDCExist.txt'));         
+          Result:=1;
+        end;
+     end
+     else begin
+        
+        if(createUDCCB.Checked) then
+        begin
+         Result:=0;
+        end
+        else begin
+          MsgBox('The user directory connection does not exist.  Check the create checkbox to create the user directory connection.',mbInformation,MB_OK);
+          Result:=1
+        end;
+     end;
+  end;
+end;
 
 function NextButtonClick(CurPageID: Integer): Boolean;
    
@@ -418,6 +540,10 @@ var
     checkVPExistPath := ExpandConstant('{app}') + '\utils\checkVPExist.js';
     cvpPath:= '"' + ExpandConstant('{app}') + '\utils\checkVPExist.bat"'; 
     fullPath := '"' + ExpandConstant('{app}') + '\utils\createVirtualProxy.bat"';
+    checkUDCExistPath := ExpandConstant('{app}') + '\utils\checkUDCExist.js';
+    UDCPath:= '"' + ExpandConstant('{app}') + '\utils\checkUDCExist.bat"';
+    createUDCPath:= '"' + ExpandConstant('{app}') + '\utils\createUDC.bat"';
+    createUDCjs := ExpandConstant('{app}') + '\utils\createUDC.js';  
     serviceConfLookup.Values[0] := getPath(ExpandConstant('{app}'),'ServiceDispatcher') + 'services.conf';
     SetPreviousData(0, 'service.conf', serviceConfLookup.Values[0]);
   end;
@@ -451,18 +577,32 @@ var
       end;      
     end;
 
+    if (createUDCCB.Checked) then
+    begin
+      
+      //MsgBox(appPath,mbInformation, MB_OK);
+      //MsgBox(appPath + ' "' + executePath + '"',mbInformation,MB_OK);
+      //MsgBox(fullPath,mbInformation,MB_OK);
+      if ShellExec('',createUDCPath, '"' + appPath + '" "' + createUDCjs + '" "' + ExpandConstant('{app}') + '"','', SW_SHOW, ewWaitUntilTerminated, ResultCode) then
+      begin
+        MsgBox('Added user directory connector', mbInformation, MB_OK);
+      end
+      else begin
+        MsgBox('Failed to add user directory connection.  user directory connection will need to be added manually.', mbError, MB_OK);
+      end;      
+    end;
+
     if Exec(ExpandConstant('{app}\utils\stopService.bat'),'','', SW_SHOW,
      ewWaitUntilTerminated, ResultCode) then
     begin
-        MsgBox('Stopped the Service Dispatcher', mbInformation, MB_OK); 
+        MsgBox('Stopped the Service Dispatcher', mbInformation, MB_OK);
+        remIPortalConfFile;
+        setIPortalConfFile; 
     end
     else begin
         MsgBox('Failed to Stop the Service Dispatcher', mbError, MB_OK); 
     end;
-    begin
-      remIPortalConfFile;
-      setIPortalConfFile;
-    end;
+    
 
     if Exec(ExpandConstant('{app}\utils\startService.bat'),'','', SW_SHOW,
      ewWaitUntilTerminated, ResultCode) then
@@ -477,51 +617,13 @@ var
   flagGo := 0;
   { Validate certain pages before allowing the user to proceed }
   if (CurPageID = Page.ID) then begin
-      
     if (hostnameField.Text = '') then begin
       errorString := 'Please enter a hostname.' + #13#10;
       flagGo :=1;
     end;
-    //MsgBox(chPath + ' ' + '"' + appPath + '" "' + checkHostNamePath + '" ' + hostnameField.Text + ' 4242', mbInformation, MB_OK);
-    if ShellExec('',chPath, '"' + appPath + '" "' + checkHostNamePath + '" ' + hostnameField.Text + ' 4242' ,'', SW_HIDE, ewWaitUntilTerminated, ResultCode) then
-    begin
-       if(FileExists(ExpandConstant('{app}\utils\checkHostName.txt'))) then
-       begin
-          //file exists, all good
-       end
-       else begin
-          errorString := 'The hostname you entered is not a valid Qlik Sense server hostname.  Please enter a valid hostname.';
-          flagGo:=1;
-       end;
-    end;
-    //MsgBox(cvpPath + ' ' + '"' + appPath + '" "' + checkVPExistPath + '" ' + hostnameField.Text + ' 4242 ' + virtualProxyField.Text, mbInformation, MB_OK);
-    if ShellExec('',cvpPath, '"' + appPath + '" "' + checkVPExistPath + '" ' + hostnameField.Text + ' 4242 ' + virtualProxyField.Text,'', SW_HIDE, ewWaitUntilTerminated, ResultCode) then
-    begin
-       if(FileExists(ExpandConstant('{app}\utils\checkVPExist.txt'))) then
-       begin
-          if MsgBox('The virtual proxy prefix you entered already exists. Do you want to use this virtual proxy for the iPortal?', mbConfirmation, MB_YESNO) =IDYES then
-          begin
-            MsgBox('You have chosen to use an existing virtual proxy.  Please ensure the authentication redirect url and port match your virtual proxy before using iPortal.', mbInformation, MB_OK);
-            DeleteFile(ExpandConstant('{app}\utils\checkVPExist.txt'));
-            flagGo:=0;
-          end
-          else begin
-            MsgBox('To create a new virtual proxy, change the virtual proxy name and check the create checkbox.',mbInformation, MB_OK);
-            DeleteFile(ExpandConstant('{app}\utils\checkVPExist.txt'));         
-            flagGo:=1;
-          end;
-       end
-       else begin
-          if(createVirtualProxyCB.Checked) then
-          begin
-            flagGo:=0;
-          end
-          else begin
-            MsgBox('The virtual proxy does not exist.  Check the create checkbox to create the virtual proxy.',mbInformation,MB_OK);
-            flagGo:=1
-          end;
-       end;
-    end;    
+      flagGo := hostnameCheck(chPath, appPath, checkHostNamePath) + virtualProxyCheck(cvpPath, appPath, checkVPExistPath)
+        + UDCCheck(UDCPath, appPath, checkUDCExistPath);
+    
     
     if(flagGo = 0) then begin
       configArray[1][1] := 'serverPort:';
@@ -537,7 +639,6 @@ var
       configArray[6][1] := 'userDirectory:';
       configArray[6][2] := udField.Text;
 
-                           
       Result := True;
     end else begin
       if(errorString = '') then
@@ -550,6 +651,7 @@ var
       Result := False;
     end;
   end else begin
+    
     Result := True;
   end;   
 end;
