@@ -1,3 +1,6 @@
+#[iPortal Installer](https://github.com/eapowertools/iPortal/releases/download/RC2/iPortal_Setup.exe)
+The iPortal installer installs iPortal on a Qlik Sense server, configures the service dispatcher, virtual proxy, and user directory connector.  If you want to do it manually continue below.
+
 # iPortal Installation Overview
 
 The iPortal application is used to easily impersonate a collection of users in Qlik Sense.  **It is not intended for production environments.**  Installing iPortal involves the following sequence of steps which are described in detail later in this guide.
@@ -10,11 +13,11 @@ The iPortal application is used to easily impersonate a collection of users in Q
 
 Additional configuration rules are required to grant iPortal users access to resources.  These rules are not covered in this installation guide.  Please refer to (TBD) for best practices on configuring security rules.
 
-> The installation guide assumes the Windows computer name where Qlik Sense is installed is named **qlikserver**.  If your Windows computer name is different, you will need to substitute your computer name for **qlikserver** throughout this guide.  
+> The installation guide assumes the hostname for the Qlik Sense server is **qlikserver**.  If your Qlik Sense server hostname is different, you will need to substitute your Qlik Sense hostname name for **qlikserver** throughout this guide.  
 
-> You will also need to edit the config.HOSTNAME entry in [IPORTAL_INSTALL]\qlik\config.js to match your Window's computer name. 
+> You will also need to edit the hostname property in [IPORTAL_INSTALL]\config\config.js to match your Window's computer name. 
 
-> The iPortal application uses an Excel ODBC User Directory Connector to import the iPortal users. If you are installing iPortal on a clean client or server machine, you may need to install the Microsoft Access Database Engine to get the required ODBC drivers.  You can use this [link](https://www.dropbox.com/s/yeuk5esosh18pp9/AccessDatabaseEngine_x64.exe?dl=0) to download the 64 bit drivers from Dropbox.
+> The iPortal application uses an Excel ODBC User Directory Connector to import the iPortal users. If you are installing iPortal on a clean client or server machine, you may need to install the Microsoft Access Database Engine to get the required ODBC drivers.  You can use this [link](https://www.microsoft.com/en-us/download/confirmation.aspx?id=13255&6B49FDFB-8E5B-4B07-BC31-15695C5A2143=1) to download the 32 bit drivers from Microsoft.
 
 ## Guide Conventions
 
@@ -80,4 +83,4 @@ Additional configuration rules are required to grant iPortal users access to res
     BASIC: Select userDirectory from user attribute list and select iPortal for the value
     ```
     
-11. Open a browser and access [https://qlikserver:3080](https://qlikserver:3080) or [https://qlikserver/iportal/hub](https://qlikserver/iportal/hub)!
+11. Open a browser and access [https://qlikserver:3090](https://qlikserver:3080) or [https://qlikserver/iportal/hub](https://qlikserver/iportal/hub)!
