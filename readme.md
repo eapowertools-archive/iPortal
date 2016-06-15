@@ -1,4 +1,4 @@
-#[iPortal Installer](https://github.com/eapowertools/iPortal/releases/download/RC3/iPortal_Setup.exe)
+#[iPortal Installer](https://github.com/eapowertools/iPortal/releases/download/RC4/iPortal_Setup.exe)
 The iPortal installer installs iPortal on a Qlik Sense server, configures the service dispatcher, virtual proxy, and user directory connector.  If you want to do it manually continue below.
 
 # iPortal Installation Overview
