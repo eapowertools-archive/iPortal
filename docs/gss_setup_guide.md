@@ -319,6 +319,17 @@ Create the following security rules using the step-by-step instructions provided
     * Context: Only in QMC
     * Tags: Custom Rule
 
+12. Name: **_gcc - TeamAdmin Create Rights**
+    * Description: Grant rights to create Tasks, Tags and Custom Properties for Team Admins.   The "read" version of this rule will already limit users to creating these things on objects in their group designation only.
+    * Actions: Create, Read
+    * Resource filter: Task*, ReloadTask*, Tag*, CustomProperty*
+    * Conditions:
+    ```
+	        user.group="QlikTeamAdmin"
+    ```
+    * Context: Only in QMC
+    * Tags: Custom Rule        
+
 ## Step-by-step Instructions
 
 1.	In the left navigation pane on the QMC Home/Start page, click on **Security rules** in the **Manage Resources** section to open the security rules management page. 
