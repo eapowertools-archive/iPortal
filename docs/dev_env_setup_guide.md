@@ -1,8 +1,6 @@
-# iPortal Development
+# iPortal Development Environment Setup
 
-If you are configuring a local development environment to modify the iPortal source code, follow the configuration guidelines below. 
-
-> If you are NOT configuring a development environment, you do NOT need to continue with the configuration settings defined in this section.  The automated installer link provided above performs all necessary configurations for non-development environments.
+If you would like to modify the iPortal source code, follow the configuration guidelines below. 
 
 Configuring an iPortal development environment involves the following steps:
 

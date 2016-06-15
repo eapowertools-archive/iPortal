@@ -144,7 +144,8 @@ Create the following security rules using the step-by-step instructions provided
     * Description: Allows Developers and Designers to create and publish apps/sheets
     * Actions: Create, Read, Update, Delete, Export, Publish
     * Resource filter: App*
-    * Conditions:         
+    * Conditions:   
+    ```      
             (
                 user.group=”QlikRootAdmin” 
                 or user.roles=”RootAdmin” 
@@ -152,6 +153,7 @@ Create the following security rules using the step-by-step instructions provided
                 or user.group=”QlikDesigner”
             )             
             and resource.owner = user
+    ```
     * Context: Only in hub
     * Tags: Custom Rule
     
@@ -159,7 +161,8 @@ Create the following security rules using the step-by-step instructions provided
     * Description: Allows users to create app objects of all types on a published app, except for Consumers, who cannot create sheets.
     * Actions: Create
     * Resource filter: App.Object_*
-    * Conditions: 
+    * Conditions:
+    ``` 
             !resource.App.stream.Empty() 
             and resource.App.HasPrivileage(“read”) 
             and (	
@@ -175,6 +178,7 @@ Create the following security rules using the step-by-step instructions provided
                 or resource.objectType = "hiddenbookmark"
                 ) 
             and !user.IsAnonymous()
+    ```
     * Context: Both in hub and QMC
     * Tags: Custom Rule
     
@@ -182,10 +186,12 @@ Create the following security rules using the step-by-step instructions provided
     * Description: Allow users to create data connections except of type folder.
     * Actions: Create, Read, Update, Delete
     * Resource filter: DataConnection_*
-    * Conditions: 
+    * Conditions:
+    ``` 
             user.group=”QlikDeveloper” 
             or user.group=”QlikTeamAdmin” 
             or user.group=”QlikRootAdmin”
+    ```
     * Context: Both in hub and QMC
     * Tags: Custom Rule
     
@@ -193,7 +199,8 @@ Create the following security rules using the step-by-step instructions provided
     * Description: Allow user to read QVD type data connection if they are a Designer.
     * Actions: Read
     * Resource filter: DataConnection_*
-    * Conditions:             
+    * Conditions:
+    ```             
                 (
                     user.group=”QlikDesigner” 
                     and resource.@DataConnectionType=”QVD”
@@ -202,7 +209,8 @@ Create the following security rules using the step-by-step instructions provided
                 (
                     user.group=”QlikDeveloper” 
                     or user.group=”QlikRootAdmin” 
-                )            
+                )
+    ```
     * Context: Only in hub
     * Tags: Custom Rule
 
@@ -210,8 +218,10 @@ Create the following security rules using the step-by-step instructions provided
     * Description: Allow user access to read for all resources matching the user’s security group value.
     * Actions: Read
     * Resource filter: App*, Stream*
-    * Conditions: 
+    * Conditions:
+    ``` 
             user.group=resource.@QlikGroup
+    ```
     * Context: Both in hub and QMC
     * Tags: Custom Rule
 
@@ -219,7 +229,8 @@ Create the following security rules using the step-by-step instructions provided
 	* Description: Allow Contributors, Designers and Developers to publish to streams.  
 	* Actions: Publish
 	* Resource filter: Stream_*
-	* Conditions:             
+	* Conditions:
+    ```             
             (	
                 user.group = “QlikRootAdmin” 
                 or user.group=”QlikContributor” 
@@ -230,6 +241,7 @@ Create the following security rules using the step-by-step instructions provided
             (	
 	            user.group=resource.@QlikGroup 
             )
+    ```
 	* Context: Both in hub and QMC
 	* Tags: Custom Rule
 	
@@ -237,9 +249,11 @@ Create the following security rules using the step-by-step instructions provided
 	* Description: Allow all access to any user that is a member of the group QlikRootAdmin.
 	* Actions: Create, Read, Update, Delete, Export, Publish, Change owner, Change role, Export data
 	* Resource filter: *
-	* Conditions:             
+	* Conditions:
+    ```             
             user.group=”QlikRootAdmin” 
-            or user.roles=”RootAdmin” 
+            or user.roles=”RootAdmin”
+    ```
 	* Context: Both in hub and QMC
 	* Tags: Custom Rule
 	
@@ -247,7 +261,8 @@ Create the following security rules using the step-by-step instructions provided
 	* Description: Allow users to see/read resources if they have read access to the stream it is published to.
     * Actions: Read
     * Resource filter: App*
-    * Conditions: 
+    * Conditions:
+    ``` 
             (
                 resource.resourcetype = “App” 
                 and resource.stream.HasPrivelage(“read”) 
@@ -262,6 +277,7 @@ Create the following security rules using the step-by-step instructions provided
                 ) 
                 and resource.app.stream.HasPrivelage(“read”) 
             )
+    ```
     * Context: Both in hub and QMC
     * Tags: Custom Rule
 
@@ -269,10 +285,12 @@ Create the following security rules using the step-by-step instructions provided
     * Description: Allow users to see apps with exception properties if they also have the same exception properties at the user level.
     * Actions: Read
     * Resource filter: App*
-    * Conditions: 
+    * Conditions:
+    ``` 
             resourse.stream.HasPrivilege(“read”) 
             and             
-            user.@AppLevelMgmt=resource.@AppLevelMgmt                 
+            user.@AppLevelMgmt=resource.@AppLevelMgmt
+    ```
     * Context: Both in hub and QMC
     * Tags: Custom Rule
 
@@ -280,8 +298,10 @@ Create the following security rules using the step-by-step instructions provided
     * Description: Allow users the QlikTeamAdmins group to have the same rights as users in the Qlik Role “QlikTeamAdmin”.
     * Actions: Read
     * Resource filter: QmcSection_App, QmcSection_DataConnection, QmcSection_ContentLibrary,QmcSection_App.Object, QmcSection_Task, QmcSection_ReloadTask, QmcSection_Event, QmcSection_SchemaEvent, QmcSection_CompositeEvent
-    * Conditions: 
+    * Conditions:
+    ``` 
 	        user.group=”QlikTeamAdmin”
+    ```
     * Context: Only in QMC
     * Tags: Custom Rule
 	
@@ -289,9 +309,11 @@ Create the following security rules using the step-by-step instructions provided
     * Description: Grants rights to resources for Team Admins.   It has to be separate from the QMCSections rule for Team Admins, as they operate on different resources.
     * Actions: Create, Read, Update, Delete, Export, Publish
     * Resource filter: Stream*, App*, ReloadTask*, SchemaEvent*, Tag*, CompositeEvent*, ExecutionResult*, CustomProperty*
-    * Conditions:             	
+    * Conditions:
+    ```             	
             user.group=”QlikTeamAdmin” 
             and user.group=resource.@QlikGroup
+    ```
     * Context: Only in QMC
     * Tags: Custom Rule
 
