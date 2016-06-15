@@ -2,7 +2,7 @@
 
 If you would like to modify the iPortal source code, follow the configuration guidelines below. 
 
-> Authorization is required to contribute to the iPortal project. 
+> Authorization must be granted before you can contribute to the eapowertools/iPortal project. 
 
 1. Install prerequisite software (Git, Node.js and your editor of choice - I prefer Visual Studio Code)
 2. Clone the iPortal repository from GitHub.com (requires a GitHub account and access to the eapowertools/iPortal repository)
