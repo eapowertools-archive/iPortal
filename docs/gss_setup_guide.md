@@ -142,6 +142,7 @@ In this section you will create new security rules to replace and augment those 
 > The security rules defined below use a prefix (_gss) in the security rule’s names.   The “gss” portion of the prefix would normally be your company name or abbreviation.   You can leave this as is or replace it with your own prefix, it will not impact the functioning of the rules.
 
 Create the following security rules using the step-by-step instructions provided below:
+
 1. Name: **_gcc – Create App**
     * Description: Allows Developers and Designers to create and publish apps/sheets
     * Actions: Create, Read, Update, Delete, Export, Publish
