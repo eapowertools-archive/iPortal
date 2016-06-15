@@ -12,6 +12,8 @@ Throughout this guide you will use the Qlik Management Console to create the fol
 
 A definition of each object/resource is provide along with a step-by-step configuration guide.  Where appropriate, a detail explanation of the configuration and it’s purpose within the governed self service deployment is provided.
 
+> Click [here](./Governed Self-Service Settings.xlsx) to download an Excel file containing the Goverened Self-Service Configuration settings. 
+
 # Create Tags
 
 Tags are simply labels attached to objects within the QMC for the purpose of identification or to provide other information about an object.  The QMC user interface allows you to sort and/or filter objects and resources using these tags.  We will be using them to easily located resources that we add, modify or disable as part of this configuration.  
