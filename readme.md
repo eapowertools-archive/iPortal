@@ -14,3 +14,9 @@ Click [here](https://github.com/eapowertools/iPortal/releases/download/Latest/iP
 Additional security configuration is required to fully enable the Governed Self Service reference deployment.  Please refer to the [GSS Setup Guide](docs/gss_setup_guide.md) for more information.
 
 For documentation on setting up a local iPortal development environment, click [here](docs/dev_env_setup_guide.md)
+
+# License
+
+EA Power Tools are a collection of software programs and methodologies for Qlik products.  EA Power Tools and iPortal are provided free of charge and are not supported by Qlik.  EA Power Tools  and iPortal use Qlik APIs, but are open source solutions provided without warranty.  Use of EA Power Tools and iPortal is at your own risk.
+
+For more information, please visit the [EAPowertools](https://community.qlik.com/community/qlik-sense/ea-powertools) space on Qlik Community.
