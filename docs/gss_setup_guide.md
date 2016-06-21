@@ -27,7 +27,9 @@ Create the following tags using the step-by-step instructions provided below:
 
 ## Step-by-step Instructions to Create Tags
 
-1. In the left navigation pane on the QMC Home/Start page, click on **Tags** in the **Manage Resources** section to open the tags management page. 
+1. In the left navigation pane on the QMC Home/Start page, click on **Tags** in the **Manage Resources** section to open the tags management page.
+
+    ![Tags Menu](./images/gss/tags_menu.png)
 2. Click on the **Create new** button located near the bottom of the page.
 3. Enter the *Name* of your new tag.  NOTE: We will associate these tags to resources later; for now, there will be no associated items for your new tags.
 4. Click the **Apply** button located near the bottom of the page to save your changes.
@@ -54,7 +56,9 @@ Create the following custom properties using the step-by-step instructions provi
 
 ## Step-by-step Instructions to Create Custom Properties
 
-1.	In the left navigation pane on the QMC Home/Start page, click on **Custom properties** in the **Manage Resources** section to open the custom properties management page. 
+1.	In the left navigation pane on the QMC Home/Start page, click on **Custom properties** in the **Manage Resources** section to open the custom properties management page.
+
+    ![Tags Menu](./images/gss/custom_properties_menu.png)
 2.	Click on the **Create new** button located near the bottom of the page.
 3.	Enter the *Name* of your new custom property.
 4.	Enable each *Resource Type* that is to be associated with the new custom property by clicking on the checkbox.
@@ -77,6 +81,8 @@ Create the following streams using the step-by-step instructions provided below:
 ## Step-by-step Instructions to Create Streams
 
 1.	In the left navigation pane on the QMC Home/Start page, click on **Streams** in the **Manage Content** section to open the streams management page. 
+
+    ![Tags Menu](./images/gss/streams_menu.png)
 2.	Click on the **Create new** button located near the bottom of the page.
 3.	Enter the *Name* of your new stream.
 4.	Click the **Apply** button located near the bottom of the page to save your changes.  When the Create security rule window is displayed, click the **Cancel** button to continue without creating any rules.  You will create security rules in the next section.
@@ -98,7 +104,9 @@ Disable the following security rules using the step-by-step instructions provide
 
 ## Step-by-step Instructions to Disable Security Rules
 
-1.	In the left navigation pane on the QMC Home/Start page, click on **Security rules** in the **Manage Resources** section to open the security rules management page. 
+1.	In the left navigation pane on the QMC Home/Start page, click on **Security rules** in the **Manage Resources** section to open the security rules management page.
+
+    ![Tags Menu](./images/gss/security_rules_menu.png) 
 2.	For each of the security rules list above, locate the rule in the list of rules and double-click on the row.  Alternatively, you can single click on the row and click on the **Edit** button located near the bottom of the page.  
 3.	In the *Identification* section of the *security rule form*, click on the **Disabled** checkbox.  
 4.	Click on the **Tags** field and select *Custom – Disabled* from the dropdown.
@@ -308,7 +316,9 @@ Create the following security rules using the step-by-step instructions provided
 
 ## Step-by-step Instructions to Create Custom Security Rules
 
-1.	In the left navigation pane on the QMC Home/Start page, click on **Security rules** in the **Manage Resources** section to open the security rules management page. 
+1.	In the left navigation pane on the QMC Home/Start page, click on **Security rules** in the **Manage Resources** section to open the security rules management page.
+
+    ![Tags Menu](./images/gss/security_rules_menu.png) 
 2.	Click on the **Create new** button located near the bottom of the page.
 3.	Enter the *Name* of your new security rule in the Identification section of the form.
 4.	Enter the *Description* in the **Identification** section of the form.
@@ -338,6 +348,8 @@ The access rules created in this section will leverage a user’s security group
 4.	Click on the **Basic** and **Tags** properties tab on the right side of the page.  A small checkmark will be displayed on the tab and the **Basic** and **Tags** section of the form will now be visible.
 5.	Enter **_gss – User Access Token Rule** as the *Name* of the user access rule.
 6.	In the **Basic** section of the form, configure the rule such that **user group** is equal to the **value** of **QlikSenseUserAccess**.
+
+    ![Tags Menu](./images/gss/licensing_configuration_user.png)
 7.  Add the *Custom Rule* tag in the **Tags** section of the form. 
 8.	Click the **Apply** button located near the bottom of the page to save your changes.  
 9.	Click on the **License usage summary** breadcrumb near the top of the page. 
@@ -347,8 +359,11 @@ The access rules created in this section will leverage a user’s security group
 13.	Enter **10** (or your desired number of allocated tokens) in the *Allocated tokens* field.
 14.	Click the **Apply** button located near the bottom of the page to save your changes.  
 15.	You will be presented with the **Create license rule** popup window.  In the **Basic** section of the form, configure the rule such that **user group** is equal to the **value** of **QlikSenseLoginAccess**.
+
+    ![Tags Menu](./images/gss/licensing_configuration_login.png)
 16. Add the *Custom Rule* tag in the **Tags** section of the form.
-17. Click on the **Apply** button located near the bottom of the popup window. 
+17. Click on the **Apply** button located near the bottom of the popup window.
+
 
 #Tag iPortal Users 
 
