@@ -243,7 +243,7 @@ Create the following security rules using the step-by-step instructions provided
     ``` 
             (
                 resource.resourcetype = "App" 
-                and resource.stream.HasPrivelage("read") 
+                and resource.stream.HasPrivelege("read") 
                 and resource.@AppLevelMgmt.empty() 
             ) 
             or
@@ -253,7 +253,7 @@ Create the following security rules using the step-by-step instructions provided
                     and resource.published = "true" 
                     and resource.objectType != "app_appscript" 
                 ) 
-                and resource.app.stream.HasPrivelage("read") 
+                and resource.app.stream.HasPrivelege("read") 
             )
     ```
     * Context: Both in hub and QMC
@@ -265,7 +265,7 @@ Create the following security rules using the step-by-step instructions provided
     * Resource filter: App\*
     * Conditions:
     ``` 
-            resourse.stream.HasPrivilege("read") 
+            resource.stream.HasPrivilege("read") 
             and             
             user.@AppLevelMgmt=resource.@AppLevelMgmt
     ```
