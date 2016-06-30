@@ -42,15 +42,19 @@ Custom Properties are metadata that can be associated to resource types within t
 Create the following custom properties using the step-by-step instructions provided below:
 
 1. Name: **AppLevelMgmt**
+    * *Description*: This custom property allows for app-level exceptions to stream access.  With this custom property an app resides in a stream that many users have access, but only a few have access to the specific application.  
     * *Resource Types*: Apps, Users
     * *Values*: Executive, HR, PCI
 2. Name: **DataConnectionType**
+    * *Description*: This custom property identifies the type of Data Connection.  This allows you to evaluate the data connection types in security rules.  This comes in handy when developers and designers are allowed to access specific data connections. 
     * *Resource Types*: Data connections
     * *Values*: Admin, Folder, MS Access, ODBC, Oracle, PowerToolQVD, QVD, SQL Server
 3. Name: **ManagedMasterItems**
+    * *Description*: This custom property is used with the Goverened Metrics Service.  It allows an app to "subscribe" to a subject area of metrics that exist in a central Metrics data source.  A Metrics Library app pushes the appropriate metrics to the master library of apps with the assigned property values.  It is possible to assign more than one subject area to an app.
     * *Resource Types*: Apps
     * *Values*: Customer Service, Finance, Marketing, Sales
 4. Name: **QlikGroup**
+    * *Description*: This custom property is for Streams, Apps and Data Connections to help manage access rights to users based on their security group membership.  This custom property prevents granular management at the individual object/user level.
     * *Resource Types*: Apps, Data connections, Reload tasks, Streams
     * *Values*: Finance, IT, Marketing, QlikAdmin, Sales
 
@@ -87,6 +91,13 @@ Create the following streams using the step-by-step instructions provided below:
 3.	Enter the *Name* of your new stream.
 4.	Click the **Apply** button located near the bottom of the page to save your changes.  When the Create security rule window is displayed, click the **Cancel** button to continue without creating any rules.  You will create security rules in the next section.
 5.	Click the **Add another** button and return to **step #3** until you have created all of the streams listed above.
+
+#Import Apps
+
+To test Governed Self-Service, the EA Team provides a set of Qlik demo apps to import and set the custom properties detailed above and publish to streams.  With these apps, it is possible to see the impact of setting custom properties along with security rules to control access.  You can download the apps from the **[Governed Self Service space on Community](https://community.qlik.com/docs/DOC-16872)**.
+
+## Post Import App Configuration in QMC
+Coming soon!  Like by 6/30/2016.  I promise!
 
 #Disable Default Security Rules
 
@@ -150,7 +161,7 @@ Create the following security rules using the step-by-step instructions provided
     * Conditions:
     ``` 
             !resource.App.stream.Empty() 
-            and resource.App.HasPrivileage("read") 
+            and resource.App.HasPrivilege("read") 
             and (	
                 resource.objectType = "userstate" 
                 or (
@@ -251,7 +262,7 @@ Create the following security rules using the step-by-step instructions provided
     ``` 
             (
                 resource.resourcetype = "App" 
-                and resource.stream.HasPrivelege("read") 
+                and resource.stream.HasPrivilege("read") 
                 and resource.@AppLevelMgmt.empty() 
             ) 
             or
@@ -261,7 +272,7 @@ Create the following security rules using the step-by-step instructions provided
                     and resource.published = "true" 
                     and resource.objectType != "app_appscript" 
                 ) 
-                and resource.app.stream.HasPrivelege("read") 
+                and resource.app.stream.HasPrivilege("read") 
             )
     ```
     * Context: Both in hub and QMC
