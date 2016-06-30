@@ -97,7 +97,13 @@ Create the following streams using the step-by-step instructions provided below:
 To test Governed Self-Service, the EA Team provides a set of Qlik demo apps to import and set the custom properties detailed above and publish to streams.  With these apps, it is possible to see the impact of setting custom properties along with security rules to control access.  You can download the apps from the **[Governed Self Service space on Community](https://community.qlik.com/docs/DOC-16872)**.
 
 ## Post Import App Configuration in QMC
-Coming soon!  Like by 6/30/2016.  I promise!
+Follow the table to publish apps to the appropriate stream and set custom property values.
+| App Name | Stream | @AppLevelMgmt | @ManagedMasterItems | @QlikGroup |
+| -------- | ------ | ------------- | ------------------- | ---------- |
+| Executive Dashboard | Sales | Executive | Sales |  |
+| Customer Experience [Telco] | Marketing |  |  | Marketing |
+| Sales Management and Customers Analysis | Sales |  |  | Sales |
+| Travel Expense Management | Finance |  |  | Finance |
 
 #Disable Default Security Rules
 
