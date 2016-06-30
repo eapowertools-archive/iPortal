@@ -98,6 +98,7 @@ To test Governed Self-Service, the EA Team provides a set of Qlik demo apps to i
 
 ## Post Import App Configuration in QMC
 Follow the table to publish apps to the appropriate stream and set custom property values.
+
 | App Name | Stream | @AppLevelMgmt | @ManagedMasterItems | @QlikGroup |
 | -------- | ------ | ------------- | ------------------- | ---------- |
 | Executive Dashboard | Sales | Executive | Sales |  |
