@@ -94,6 +94,7 @@ Create the following streams using the step-by-step instructions provided below:
 
 After creating the streams, edit each stream and add the @QlikGroup custom property value that matches the stream name.
 ![Set Custom Property on Stream](./images/gss/streams_customprop.png)
+
 _Example custom property setting on a stream_
 
 #Import Apps
@@ -111,6 +112,7 @@ Follow the table to publish apps to the appropriate stream and set custom proper
 | Travel Expense Management | Finance |  |  | Finance |
 
 ![Set Custom Properties on Apps](./images/app_customprop.png)
+
 _Example custom property setting on Executive Dashboard app_
 
 #Disable Default Security Rules
