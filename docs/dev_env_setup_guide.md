@@ -21,7 +21,7 @@ If you would like to modify the iPortal source code, follow the configuration gu
 
 **[QLIK_INSTALL]** - This is the fully qualified path for the Qlik Sense install (ex: c:\Program File\Qlik\Sense)
 
-**[IPORTAL_INSTALL]** - This is the fully qualified path for the iPortal application install (ex: c:\Program Files\Qlik\Sense\ServiceDispatcher\Node\iPortal)
+**[IPORTAL_INSTALL]** - This is the fully qualified path for the iPortal application install (ex: C:\Program Files\Qlik\Sense\EAPowerTools\iPortal)
 
 ## iPortal Step-by-Step Installation Guide
 
@@ -43,7 +43,7 @@ If you would like to modify the iPortal source code, follow the configuration gu
     DisplayName=iPortal
     ExecType=nodejs
     ExePath=Node\node.exe
-    Script=Node\iportal\server.js
+    Script=..\EAPowerTools\iPortal\server.js
     ```
 
 5. Restart the **Qlik Sense Service Dispatcher** Windows Service.
