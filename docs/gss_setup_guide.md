@@ -156,7 +156,7 @@ Create the following security rules using the step-by-step instructions provided
 1. Name: **_gss – Create App**
     * Description: Allows Developers and Designers to create and publish apps/sheets
     * Actions: Create, Read, Update, Delete, Export, Publish
-    * Resource filter: App\*
+    * Resource filter: App_\*
     * Conditions:   
     ```      
             (
@@ -267,7 +267,7 @@ Create the following security rules using the step-by-step instructions provided
             user.group="QlikRootAdmin" 
             or user.roles="RootAdmin"
     ```
-	* Context: Both in hub and QMC
+	* Context: Only in QMC
 	* Tags: Custom Rule
 	
 8. Name: **_gss – Stream Rule – Apps Default Rule**
