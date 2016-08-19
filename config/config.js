@@ -6,7 +6,7 @@ var logPath = path.join(__dirname, '/../log/');
 var routePath = path.join(__dirname, 'server/routes/');
 var publicPath = path.join(__dirname, 'public/');
 var utilsPath = path.join(__dirname, '/../utils/');
-var excelFilePath = path.join(__dirname, '/../udc/excel/iportal_users.xlsx');
+var excelFilePath = path.join(__dirname, '/../udc/excel/iportal_users - Qlik.xlsx');
 
 var logFile = logPath + 'iPortal_' + dateTimeString() + '.log';
 
@@ -15,9 +15,9 @@ var config = extend(true, {
     qpsPort: 4243,
     qrsPort: 4242,
     repoAccount: 'UserDirectory=Internal;UserId=sa_repository',
-    hostname: 'senseServerName',
-    virtualProxy: 'iPortal',
-    allowedConnections: 'domainOfSystems',
+    hostname: 'qlikserver',
+    virtualProxy: 'iportal',
+    allowedConnections: '*',
     userDirectory: 'iportal',
     sessionSecret: 'iportal-secret',
     certificates: {
@@ -34,7 +34,7 @@ var config = extend(true, {
     utilsPath: utilsPath,
     excelFilePath: excelFilePath,
     logLevel: 'debug',
-    theme: 'photos'
+    theme: 'qlik'
 });
 
 module.exports = config;

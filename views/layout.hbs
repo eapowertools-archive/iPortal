@@ -3,75 +3,98 @@
   <head>
     <title>{{title}}</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <link rel='stylesheet' href='/stylesheets/style.css' />
     <link rel='stylesheet' href='/stylesheets/bootstrap.css' />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
     <script type="text/javascript" src="/javascripts/jquery.js"></script>
     <script type="text/javascript" src="/javascripts/bootstrap.js"></script>    
   </head>
   <body>
+
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+
+        <div class="navbar-header">
+
+          <!-- Mobile Navbar -->
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+
+          <!-- Brand -->
+          <a href="/" class="pull-left"><img alt="iPortal" src="/images/powertoolslogo.png"></a>
+          <a class="navbar-brand" href="/" style="padding-left: 20px;"> iPortal</a>
+
+        </div>
+
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Role Groups <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a onclick="show_all_group_visibility()">Show Role Group Assignments</a></li>
+                <li><a onclick="hide_all_group_visibility()">Hide Role Group Assignments</a></li>
+              </ul>
+            </li>
+            <li><a data-toggle="modal" data-target="#myModal">About iPortal</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+    
+
+    <!-- Body -->
     <div class="container">
       <div class="col-md-12">
-     
-           <nav class="navbar navbar-default">
-            <div class="container-fluid">
-              <!-- Brand and toggle get grouped for better mobile display -->
-              <div class="navbar-header">     
-                <a href="/" class="pull-left"><img alt="iPortal" src="/images/powertoolslogo.png"></a>
-                <a class="navbar-brand" href="/" style="padding-left: 20px;"> iPortal</a>
-              </div>
 
-               
-              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">                                       
-                <ul class="nav navbar-nav navbar-right">        
-                  <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
-                    <ul class="dropdown-menu">
-                      <li><a onclick="show_all_group_visibility()">Show All Group Assignments</a></li>
-                      <li><a onclick="hide_all_group_visibility()">Hide All Group Assignments</a></li>
-                      <li role="separator" class="divider"></li>
-                      <li><a data-toggle="modal" data-target="#myModal">About iPortal</a></li>                      
-                    </ul>
-                  </li>
-                </ul>
-              </div>  
-              
-            </div><!-- /.container-fluid -->
-          </nav>                
-      
-          {{{body}}}    
-          
-          <!-- Modal: About iPortal -->
-          <div class="modal fade" id="myModal" role="dialog">
-            <div class="modal-dialog modal-lg">
-            
-              <!-- Modal content-->
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h4 class="modal-title">About iPortal</h4>
-                </div>
-                <div class="modal-body">
-                  <p>The iPortal application is used to <i>impersonate</i> different users within Qlik Sense.  
-                  It is primarily used to test the results of security rule changes on a population of users
-                  that belong to various security groups.</p>
-                  <p><h4>Contributors</h4>
-                  <ul>
-                    <li>Eric Bracke</li>
-                    <li>Brad Peterman</li>
-                    <li>Jeffrey Goldberg</li>
-                    <li>Tom McAlees</li>
-                  </ul>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-              </div>
-              
-            </div>
-          </div>                      
-            
-          <p class="footer">Qlik Sense Impersonation Portal (iPortal). Refer to <a data-toggle="modal" data-target="#myModal">about</a> page for more details.</p>
+        {{{body}}}
+
       </div>
     </div>
+
+    
+    <!-- Modal: About iPortal -->
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog modal-lg">
+      
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">About iPortal</h4>
+          </div>
+          <div class="modal-body">
+            <p>The iPortal application is used to <i>impersonate</i> different users within Qlik Sense.  
+            It is primarily used to test the results of security rule changes on a population of users
+            that belong to various security groups.</p>
+            <p><h4>Contributors</h4>
+            <ul>
+              <li>Eric Bracke</li>
+              <li>Brad Peterman</li>
+              <li>Jeffrey Goldberg</li>
+              <li>Tom McAlees</li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+        
+      </div>
+    </div>                      
+      
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <p class="text-muted">Qlik Sense Impersonation Portal (iPortal). Refer to <a data-toggle="modal" data-target="#myModal">about</a> page for more details.</p>
+      </div>
+    </footer>
+
+
   </body>
 </html>
