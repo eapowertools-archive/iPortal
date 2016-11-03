@@ -1,22 +1,22 @@
 <div class="user-container">   
 
     {{#each users}}
-        <div class="user-panel">                                                       
+        <div class="user-panel" onclick="toggle_group_visibility('user-group{{@index}}');" style="background:linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)),url('/images/{{../cfg.theme}}/{{this.image}}');">                                                       
             <div class="user-panel-name">{{this.name}}</div>
-            <div class="user-panel-title"><a class="user-panel-title" onclick="toggle_group_visibility('user-group{{@index}}');">{{this.title}}</a></div>            
-            <div class="user-panel-body" style="background-image: url('/images/{{../cfg.theme}}/{{this.image}}');">
+            <div class="user-panel-title">{{this.title}}</div>
+            <div class="user-panel-role">{{this.role}}</div>
+            <div class="user-panel-body">
                 <div id="user-group{{@index}}" class="user-panel-groups">
                     {{#each this.groups}}
                     {{this.groups}}
                         <button class="group-btn">{{this}}</button>
                     {{/each}}
-                </div>                                 
+                </div>
                 <div class="user-panel-apps">                          
                     {{#each this.apps}}
-                    
                         <a class="btn {{ButtonStyle this}} btn-sm user-app-btn" href="/login?user={{../userid}}&directory={{../udc}}&app={{this}}">{{this}}</a>
                     {{/each}}
-                </div>                       
+                </div> 
              </div>
         </div>
     {{/each}}

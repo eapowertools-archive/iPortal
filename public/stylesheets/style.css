@@ -1,18 +1,54 @@
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #f5f5f5;
+  text-align: center;
 }
 
+/* Layout styles
+-------------------------------------------------- */
+body > .container {
+  padding: 60px 15px 0;
+}
+.container .text-muted {
+  margin: 20px 0;
+}
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+/* Qlik styles 
+-------------------------------------------------- */
 a {
-  color: #00B7FF;
+  color: #777;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+}
+a:hover, .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+  color: #509517;
+  font-weight: bold;
+  text-decoration: none;
   cursor: pointer;
 }
 
-.footer {
-  margin-top: 15px;
-  text-align: center;  
-}
-
+/* User Tile Layout
+-------------------------------------------------- */
 .user-container {
   text-align: center;
 }
@@ -28,6 +64,31 @@ a {
   padding: 2px;
   margin: 2px;
 }
+.user-panel:hover {
+  cursor: pointer;
+}
+
+.user-panel-name {
+  color: #ddd;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.user-panel-title {
+  color: #ddd;
+  font-style: italic;
+  white-space: nowrap;
+}
+
+.user-panel-role {
+  color:white;
+  white-space: nowrap;
+}
+
+.user-panel:hover > .user-panel-role {
+  color: #f8981d;
+  text-decoration: none;
+}
 
 .user-panel-body {   
   display: inline-block;
@@ -35,29 +96,6 @@ a {
   height: 160px;  
   position: relative;
   vertical-align: top;
-}
-
-.user-panel:hover {
-  background-color: lightgrey;
-}
-
-.user-panel-name {
-  color:darkgreen;
-  font-weight: bold;
-  font-size: 16px;
-}
-
-.user-panel-title {
-  color:darkgreen;
-  font-style: italic;
-  white-space: nowrap;
-}
-
-.user-panel-title:hover {
-  color:darkgreen;
-  font-style: italic;
-  text-decoration: none;    
-  cursor: pointer;
 }
 
 .user-panel-groups {
@@ -69,7 +107,7 @@ a {
 
 .user-panel-apps {
   position: absolute;
-  bottom: 4px;
+  bottom: 6px;
   width: 100%; 
   text-align: center;
 }
@@ -106,4 +144,3 @@ a {
     display: block;
     z-index: 100;
 }
-

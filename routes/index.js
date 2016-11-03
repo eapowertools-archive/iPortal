@@ -26,9 +26,11 @@ router.get('/', function(req, res, next) {
 	
 	handlebars.registerHelper('ButtonStyle', function(app) {
 		if (app.toUpperCase()=="HUB") {
+			return "btn-primary";
+		} else if (app.toUpperCase()=="PINIT") {
 			return "btn-success";
 		} else {
-			return "btn-primary";
+			return "btn-info";
 		}  		
 	});
 
@@ -43,7 +45,7 @@ router.get('/login', function(req, res, next) {
 		
 		var user = req.query.user;
 		var directory = req.query.directory;
-		var app = req.query.app;
+		var app = (req.query.app.toUpperCase()=="PINIT" ? 'resources/pinit/index.html' : req.query.app) ;
 		var authUri = 'https://' + cfg.hostname +  ':' + cfg.qpsPort +  '/qps/' + cfg.virtualProxy;
 		
 		logger.debug('Route: GET /login - USER: (',user,') DIRECTORY: (', directory,')');
