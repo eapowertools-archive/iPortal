@@ -1,6 +1,6 @@
 # iPortal Installation 
 
-**[Latest Release](https://github.com/eapowertools/iPortal/releases/latest)**
+**[Latest Release Notes](https://github.com/eapowertools/iPortal/releases/latest)**
 
 iPortal is a web application that allows you to easily impersonate multiple users in a Qlik Sense Enterprise deployment.  **It is not intended for production environments.**
 
