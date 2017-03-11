@@ -7,6 +7,7 @@ var routePath = path.join(__dirname, 'server/routes/');
 var publicPath = path.join(__dirname, 'public/');
 var utilsPath = path.join(__dirname, '/../utils/');
 var excelFilePath = path.join(__dirname, '/../udc/excel/iportal_users.xlsx');
+var csvFilePath = path.join(__dirname, '/../udc/');
 
 var logFile = logPath + 'iPortal_' + dateTimeString() + '.log';
 
@@ -22,28 +23,28 @@ var config = extend(true, {
     sessionSecret: 'iportal-secret',
     certificates: {
         client: path.resolve(certPath, 'client.pem'),
-		client_key: path.resolve(certPath,'client_key.pem'),
-		server: path.resolve(certPath, 'server.pem'),
-		server_key: path.resolve(certPath, 'server_key.pem'),
-		root: path.resolve(certPath,'root.pem')
-	},
+        client_key: path.resolve(certPath, 'client_key.pem'),
+        server: path.resolve(certPath, 'server.pem'),
+        server_key: path.resolve(certPath, 'server_key.pem'),
+        root: path.resolve(certPath, 'root.pem')
+    },
     routePath: routePath,
     publicPath: publicPath,
     logPath: logPath,
     logFile: logFile,
     utilsPath: utilsPath,
     excelFilePath: excelFilePath,
+    csvFilePath: csvFilePath,
     logLevel: 'debug',
     theme: 'photos'
 });
 
 module.exports = config;
 
-function dateTimeString()
-{
+function dateTimeString() {
     var now = new Date();
     var strDate = now.toISOString();
-    
+
     return strDate.split(':').join('.');
-    
+
 }

@@ -1,0 +1,6 @@
+appName,port,path,boolAuth
+hub,,/hub,true
+qmc,,/qmc,true
+qmcu,,/content/default/qmculogin.html,true
+pinit,,/pinit,true
+gms,8590,/masterlib/testpage,false

@@ -1,5 +1,6 @@
 #ignoring folders
 tmp/
+tests/
 
 # Logs
 logs
