@@ -17,7 +17,7 @@ var config = extend(true, {
     qrsPort: 4242,
     repoAccount: 'UserDirectory=Internal;UserId=sa_repository',
     hostname: 'senseServerName',
-    virtualProxy: 'iPortal',
+    virtualProxy: 'iportal',
     allowedConnections: 'domainOfSystems',
     userDirectory: 'iportal',
     sessionSecret: 'iportal-secret',

@@ -1,0 +1,21 @@
+{
+    "prefix": "iportal",
+    "description": "iportal",
+    "authenticationModuleRedirectUri": "https://ENTERSERVER:ENTERPORT/",
+    "sessionModuleBaseUri": "",
+    "loadBalancingModuleBaseUri": "",
+    "loadBalancingServerNodes": [{
+        "id": ENTERLBID
+    }],
+    "authenticationMethod": 0,
+    "anonymousAccessMode": 0,
+    "windowsAuthenticationEnabledDevicePattern": "Windows",
+    "sessionCookieHeaderName": "X-Qlik-Session-iportal",
+    "sessionCookieDomain": "",
+    "additionalResponseHeaders": "",
+    "sessionInactivityTimeout": 30,
+    "extendedSecurityEnvironment": false,
+    "websocketCrossOriginWhiteList": ["ENTERSERVER"],
+    "defaultVirtualProxy": false,
+    "tags": []
+}
