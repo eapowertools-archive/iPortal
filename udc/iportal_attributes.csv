@@ -1,0 +1,78 @@
+userid,type,value
+a_wilson,group,QlikRootAdmin
+a_wilson,group,IT
+a_wilson,group,QlikSenseUserAccess
+j_thomas,group,QlikTeamAdmin
+j_thomas,group,QlikDeveloper
+j_thomas,group,Finance
+j_thomas,group,QlikSenseUserAccess
+p_harris,group,QlikTeamAdmin
+p_harris,group,QlikDeveloper
+p_harris,group,Sales
+p_harris,group,QlikSenseUserAccess
+j_green,group,QlikDesigner
+j_green,group,Sales
+j_green,group,QlikSenseUserAccess
+s_bowers,group,QlikDesigner
+s_bowers,group,IT
+s_bowers,group,QlikSenseUserAccess
+l_denton,group,QlikContributor
+l_denton,group,Marketing
+l_denton,group,QlikSenseUserAccess
+a_foster,group,QlikContributor
+a_foster,group,Sales
+a_foster,group,QlikSenseUserAccess
+e_hanson,group,QlikAnalyst
+e_hanson,group,Finance
+e_hanson,group,QlikSenseLoginAccess
+l_johnson,group,QlikConsumer
+l_johnson,group,Executive
+l_johnson,group,Sales
+l_johnson,group,QlikSenseLoginAccess
+e_reese,group,QlikConsumer
+e_reese,group,Sales
+e_reese,group,QlikSenseLoginAccess
+a_wilson,title,BI Administrator
+j_thomas,title,BI Developer
+p_harris,title,SR. BI Developr
+j_green,title,BI Analyst
+s_bowers,title,Data Analyst
+l_denton,title,Marketing Analyst
+a_foster,title,Sales Operations Lead
+e_hanson,title,Financial Analyst
+l_johnson,title,VP - Operations
+e_reese,title,Sales Territory Mgr
+a_wilson,app,Hub
+j_thomas,app,Hub
+p_harris,app,Hub
+j_green,app,Hub
+s_bowers,app,Hub
+l_denton,app,Hub
+a_foster,app,Hub
+e_hanson,app,Hub
+l_johnson,app,Hub
+e_reese,app,Hub
+a_wilson,app,QMC
+j_thomas,app,QMC
+p_harris,app,QMC
+j_thomas,app,qmcu
+a_wilson,udc,iPortal
+j_thomas,udc,iPortal
+p_harris,udc,iPortal
+j_green,udc,iPortal
+s_bowers,udc,iPortal
+l_denton,udc,iPortal
+a_foster,udc,iPortal
+e_hanson,udc,iPortal
+l_johnson,udc,iPortal
+e_reese,udc,iPortal
+a_wilson,image,a_wilson.jpg
+j_thomas,image,j_thomas.jpg
+p_harris,image,p_harris.jpg
+j_green,image,j_green.jpg
+s_bowers,image,s_bowers.jpg
+l_denton,image,l_denton.jpg
+a_foster,image,a_foster.jpg
+e_hanson,image,e_hanson.jpg
+l_johnson,image,l_johnson.jpg
+e_reese,image,e_reese.jpg

@@ -1,109 +1,113 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    padding: 50px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
-  color: #00B7FF;
-  cursor: pointer;
+    color: #00B7FF;
+    cursor: pointer;
 }
 
 .footer {
-  margin-top: 15px;
-  text-align: center;  
+    margin-top: 15px;
+    text-align: center;
 }
 
 .user-container {
-  text-align: center;
+    text-align: center;
 }
 
 .user-panel {
-  display: inline-block;
-  position: relative;
-  vertical-align: top;
-  width: 170px;
-  height: 210px;
-  border: 1px  solid;
-  color: lightgrey;
-  padding: 2px;
-  margin: 2px;
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+    width: 170px;
+    height: 210px;
+    border: 1px solid;
+    color: lightgrey;
+    padding: 2px;
+    margin: 2px;
 }
 
-.user-panel-body {   
-  display: inline-block;
-  width: 160px;
-  height: 160px;  
-  position: relative;
-  vertical-align: top;
+.user-panel-body {
+    display: inline-block;
+    width: 160px;
+    height: 160px;
+    position: relative;
+    vertical-align: top;
 }
 
 .user-panel:hover {
-  background-color: lightgrey;
+    background-color: lightgrey;
 }
 
 .user-panel-name {
-  color:darkgreen;
-  font-weight: bold;
-  font-size: 16px;
+    color: darkgreen;
+    font-weight: bold;
+    font-size: 16px;
 }
 
 .user-panel-title {
-  color:darkgreen;
-  font-style: italic;
-  white-space: nowrap;
+    color: darkgreen;
+    font-style: italic;
+    white-space: nowrap;
 }
 
 .user-panel-title:hover {
-  color:darkgreen;
-  font-style: italic;
-  text-decoration: none;    
-  cursor: pointer;
+    color: darkgreen;
+    font-style: italic;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .user-panel-groups {
-  color: grey;
-  font-size: 10px;
-  margin-top: 5px;
-  display: none;
+    color: grey;
+    font-size: 10px;
+    margin-top: 5px;
+    display: none;
 }
 
 .user-panel-apps {
-  position: absolute;
-  bottom: 4px;
-  width: 100%; 
-  text-align: center;
+    position: absolute;
+    bottom: 4px;
+    width: 100%;
+    text-align: center;
 }
 
 .user-app-btn {
-  width: 40%;
+    width: 40%;
+    margin-top: 5px;
 }
 
 .group-btn {
-  -webkit-border-radius: 28;
-  -moz-border-radius: 28;
-  border-radius: 28px;
-  font-family: Arial;
-  background-color: white;
-  color: grey;
-  font-size: 11px;
-  padding: 2px 7px 2px 7px;
-  border: solid grey 1px;
-  text-decoration: none;
-  margin: 2px;
+    -webkit-border-radius: 28;
+    -moz-border-radius: 28;
+    border-radius: 28px;
+    font-family: Arial;
+    background-color: white;
+    color: grey;
+    font-size: 11px;
+    padding: 2px 7px 2px 7px;
+    border: solid grey 1px;
+    text-decoration: none;
+    margin: 2px;
 }
 
+
 /* Dropdown Content (Hidden by Default) */
+
 .dropdown-content {
     display: none;
     position: absolute;
     background-color: #f9f9f9;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 }
 
+
 /* Show the dropdown menu on hover */
+
 .dropdown:hover .dropdown-content {
     display: block;
     z-index: 100;
 }
-

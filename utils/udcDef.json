@@ -1,0 +1,51 @@
+{
+    "name": "iportal",
+    "userDirectoryName": "Queries user directory via the corresponding User Directory Connector",
+    "configured": false,
+    "operational": false,
+    "type": "Repository.UserDirectoryConnectors.ODBC.ODBC",
+    "syncOnlyLoggedInUsers": false,
+    "syncStatus": 0,
+    "configuredError": "",
+    "operationalError": "",
+    "settings": [{
+            "name": "User directory name",
+            "value": "IPORTAL",
+            "secret": false,
+            "userDirectorySettingType": "String"
+        },
+        {
+            "name": "Users table",
+            "value": "iportal_users.csv",
+            "secret": false,
+            "userDirectorySettingType": "String"
+        },
+        {
+            "name": "Attributes table",
+            "value": "iportal_attributes.csv",
+            "secret": false,
+            "userDirectorySettingType": "String"
+        },
+        {
+            "name": "Connection string part 1",
+            "value": "Driver={Microsoft Access Text Driver (*.txt, *.csv)};Extensions=asc,csv,tab,txt;Dbq=ENTERPATH\\udc",
+            "secret": false,
+            "userDirectorySettingType": "String"
+        },
+        {
+            "name": "Connection string part 2 (secret)",
+            "value": "",
+            "secret": true,
+            "secretValue": "",
+            "userDirectorySettingType": "String"
+        },
+        {
+            "name": "Synchronization timeout in seconds",
+            "value": "240",
+            "secret": false,
+            "userDirectorySettingType": "Int"
+        }
+    ],
+    "tags": [],
+    "creationType": 1
+}
