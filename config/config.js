@@ -36,7 +36,8 @@ var config = extend(true, {
     excelFilePath: excelFilePath,
     csvFilePath: csvFilePath,
     logLevel: 'debug',
-    theme: 'photos'
+    theme: 'photos',
+    version: '1.5.0'
 });
 
 module.exports = config;
