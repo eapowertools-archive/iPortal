@@ -198,7 +198,7 @@ Create the following security rules using the step-by-step instructions provided
 3. Name: **_gss – DataConnection Create**
     * Description: Allow users to create data connections except of type folder.
     * Actions: Create, Read, Update, Delete
-    * Resource filter: DataConnection_\*
+    * Resource filter: DataConnection_\*, QmcSection_DataConnection
     * Conditions:
     ``` 
             user.group="QlikDeveloper" 
