@@ -448,6 +448,20 @@ Create the following security rules using the step-by-step instructions provided
     ```
 	* Context: Only in QMC
 	* Tags: Custom Rule
+	
+13. Name: **_gss M- TeamAdmin Duplicate Rights**
+	* Description: Allows Team Admins to duplicate apps in the QMC.
+	* Actions: Create, Read, Update, Delete
+	* Resource filter: App\*, App_\*
+	* Conditions:
+    ```             
+            (user.group="QlikDeveloper")
+		and(user.group=resource.@QlikGroup or 
+		resource.owner=user)
+    ```
+	* Context: Only in QMC
+	* Tags: Custom Rule
+
 
 [Back to Top](#toc)
 
