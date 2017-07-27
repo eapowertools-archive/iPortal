@@ -341,7 +341,7 @@ Create the following security rules using the step-by-step instructions provided
             (   
             user.group = "QlikRootAdmin" 
             or user.group="QlikContributor" 
-            or user.group like"*Developers" 
+            or user.group like "*Developer" 
             or user.group="QlikDesigner"
             or user.roles = "Developer"
             )            
@@ -376,7 +376,7 @@ Create the following security rules using the step-by-step instructions provided
             (
             user.group="QlikRootAdmin" 
             or user.roles="RootAdmin" 
-            or user.group like"*Developers" 
+            or user.group like "*Developer" 
             or user.group="QlikDesigner"
             or user.roles ="Developer"
             )             
@@ -393,8 +393,8 @@ Create the following security rules using the step-by-step instructions provided
     ```             
                 (
                     user.group="QlikDesigner"
-                    or user.group like "*Developers"
-                    or user.roles ="Developer" 
+                    or user.group like "*Developer"
+                    or user.roles="Developer" 
                     and resource.@DataConnectionType="QVD"
                 ) 
                 or 
@@ -416,7 +416,7 @@ Create the following security rules using the step-by-step instructions provided
                 and resource.App.HasPrivilege("read") 
                 and resource.objectType = "userstate" 
                 or (
-                    user.group like "*Developers"
+                    user.group like "*Developer"
                     or user.group=user.@TeamAdmin
                 )
                 and !user.IsAnonymous()
