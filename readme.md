@@ -11,7 +11,7 @@ Click **[here](https://s3.amazonaws.com/eapowertools/iportal/iPortal_Setup.exe)*
 * Add & configure a Qlik Sense virtual proxy 
 * Add & configure a Qlik Sense user directory connector 
 
-> The installer has been tested with Qlik Sense Enterprise June 2017.
+> The installer has been tested with Qlik Sense 2.2.4 and 3.0
 
 Additional security configuration is required to fully enable the Governed Self Service reference deployment.  Please refer to the [GSS Setup Guide](docs/gss_setup_guide.md) for more information.
 
