@@ -19,11 +19,21 @@ var logger = new(winston.Logger)({
 	GET /
 
 	This is the only web page in this application and it displays the list of users
-	associated with the EXCELUDS
+	associated with the CSV UDS
 
  */
 router.get('/', function(req, res, next) {
     logger.debug('Route: GET /');
+
+    if (cfg.defaultView == 'grid') {
+        res.redirect('/grid');    
+    } else {
+        res.redirect('/list');    
+    }
+});
+
+router.get('/list', function(req, res, next) {
+    logger.debug('Route: GET /list');
 
     handlebars.registerHelper('ButtonStyle', function(app) {
         if (app.toUpperCase() == "HUB") {
@@ -36,7 +46,24 @@ router.get('/', function(req, res, next) {
     var config = users.loadUsers("iportal_users.csv", "iportal_attributes.csv");
     config.cfg = cfg;
 
-    res.render('index', config);
+    res.render('list', config);
+});
+
+router.get('/grid', function(req, res, next) {
+    logger.debug('Route: GET /grid');
+
+    handlebars.registerHelper('ButtonStyle', function(app) {
+        if (app.toUpperCase() == "HUB") {
+            return "btn-success";
+        } else {
+            return "btn-primary";
+        }
+    });
+
+    var config = users.loadUsers("iportal_users.csv", "iportal_attributes.csv");
+    config.cfg = cfg;
+
+    res.render('grid', config);
 });
 
 router.get('/login', function(req, res, next) {

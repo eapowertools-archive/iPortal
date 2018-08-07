@@ -13,9 +13,18 @@ a {
     text-align: center;
 }
 
-.user-container {
+.grid-container {
     text-align: center;
+    width: 900px;    
+    margin: 0 auto;    
+    padding-top: 20px;
 }
+
+.list-container {
+    text-align: center; 
+}
+
+.dropdown-item i { min-width: 20px; text-align: center; }
 
 .user-panel {
     display: inline-block;
@@ -72,6 +81,21 @@ a {
     bottom: 4px;
     width: 100%;
     text-align: center;
+}
+
+.user-table-image {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    position: relative;
+    vertical-align: top;
+}
+
+.user-table-btn {
+    width: 50px;
+    height: 30px;
+    margin-top: 1px;
+    
 }
 
 .user-app-btn {

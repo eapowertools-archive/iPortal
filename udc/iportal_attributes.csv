@@ -1,37 +1,37 @@
 userid,type,value
 a_wilson,group,QlikRootAdmin
 a_wilson,group,IT
-a_wilson,group,QlikSenseUserAccess
-j_thomas,group,QlikTeamAdmin
+a_wilson,group,LicenseProfessional
 j_thomas,group,QlikDeveloper
+j_thomas,group,QlikTeamAdmin
 j_thomas,group,Finance
-j_thomas,group,QlikSenseUserAccess
-p_harris,group,QlikTeamAdmin
+j_thomas,group,LicenseProfessional
 p_harris,group,QlikDeveloper
+p_harris,group,QlikTeamAdmin
 p_harris,group,Sales
-p_harris,group,QlikSenseUserAccess
+p_harris,group,LicenseProfessional
 j_green,group,QlikDesigner
 j_green,group,Sales
-j_green,group,QlikSenseUserAccess
+j_green,group,LicenseProfessional
 s_bowers,group,QlikDesigner
 s_bowers,group,IT
-s_bowers,group,QlikSenseUserAccess
+s_bowers,group,LicenseProfessional
 l_denton,group,QlikContributor
 l_denton,group,Marketing
-l_denton,group,QlikSenseUserAccess
+l_denton,group,LicenseProfessional
 a_foster,group,QlikContributor
 a_foster,group,Sales
-a_foster,group,QlikSenseUserAccess
+a_foster,group,LicenseProfessional
 e_hanson,group,QlikAnalyst
 e_hanson,group,Finance
-e_hanson,group,QlikSenseLoginAccess
+e_hanson,group,LicenseProfessional
 l_johnson,group,QlikConsumer
 l_johnson,group,Executive
 l_johnson,group,Sales
-l_johnson,group,QlikSenseLoginAccess
+l_johnson,group,LicenseProfessional
 e_reese,group,QlikConsumer
 e_reese,group,Sales
-e_reese,group,QlikSenseLoginAccess
+e_reese,group,LicenseAnalyst
 a_wilson,title,BI Administrator
 j_thomas,title,BI Developer
 p_harris,title,SR. BI Developr
@@ -42,6 +42,16 @@ a_foster,title,Sales Operations Lead
 e_hanson,title,Financial Analyst
 l_johnson,title,VP - Operations
 e_reese,title,Sales Territory Mgr
+a_wilson,description,"Root administrator for the Qlik Sense deployment"
+j_thomas,description,"Qlik Sense developer and team administrator for the Finance group"
+p_harris,description,"Qlik Sense developer and team administrator for the Sales group"
+j_green,description,"Qlik Sense designer for the Sales group"
+s_bowers,description,"Qlik Sense designer for the IT group"
+l_denton,description,"Qlik Sense contributor for the Marketing group"
+a_foster,description,"Qlik Sense contributor for the Sales group"
+e_hanson,description,"Qlik Sense analyst for the Finance group"
+l_johnson,description,"Qlik Sense consumer in the Sales and Executive group"
+e_reese,description,"Qlik Sense consumer in the Sales group"
 a_wilson,app,Hub
 j_thomas,app,Hub
 p_harris,app,Hub

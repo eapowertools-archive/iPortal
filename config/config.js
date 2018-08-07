@@ -12,11 +12,19 @@ var csvFilePath = path.join(__dirname, '/../udc/');
 var logFile = logPath + 'iPortal_' + dateTimeString() + '.log';
 
 var config = extend(true, {
-    serverPort: 3090,
+    defaultView: 'list',
+    showCorporateGroups: false,
+    showQlikGroups: false,
+    showLicenseGroup: false,
+    showDescriptionColumn: false,
+    showCorporateColumn: true,
+    showQlikColumn: true,
+    showLicenseColumn: false,
+    serverPort: 3091,
     qpsPort: 4243,
     qrsPort: 4242,
     repoAccount: 'UserDirectory=Internal;UserId=sa_repository',
-    hostname: 'senseServerName',
+    hostname: 'localhost',
     virtualProxy: 'iportal',
     allowedConnections: 'domainOfSystems',
     userDirectory: 'iportal',
