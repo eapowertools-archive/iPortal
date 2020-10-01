@@ -16,7 +16,7 @@
     "express-session": "~1.13.0",
     "extend": "~3.0.0",
     "hbs": "~3.1.0",
-    "jquery": "~2.2.3",
+    "jquery": "~3.4.1",
     "log4js": "~0.6.36",
     "morgan": "~1.6.1",
     "request": "^2.72.0",
